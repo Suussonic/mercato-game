@@ -1,26 +1,191 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* Dark mode - Buttons */
+.dark .ant-btn-default {
+  background: #334155 !important;
+  border-color: #475569 !important;
+  color: #f1f5f9 !important;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+.dark .ant-btn-default:hover {
+  background: #475569 !important;
+  border-color: #64748b !important;
+  color: #ffffff !important;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.dark .ant-btn-primary {
+  background: #3b82f6 !important;
+  border-color: #3b82f6 !important;
+}
+
+.dark .ant-btn-primary:hover {
+  background: #2563eb !important;
+  border-color: #2563eb !important;
+}
+
+/* Dark mode - Tags */
+.dark .ant-tag {
+  background: #334155 !important;
+  border-color: #475569 !important;
+  color: #f1f5f9 !important;
+}
+
+.dark .ant-tag-gold {
+  background: #92400e !important;
+  border-color: #b45309 !important;
+  color: #fef3c7 !important;
+}
+
+.dark .ant-tag-red {
+  background: #991b1b !important;
+  border-color: #dc2626 !important;
+  color: #fee2e2 !important;
+}
+
+.dark .ant-tag-blue {
+  background: #1e40af !important;
+  border-color: #3b82f6 !important;
+  color: #dbeafe !important;
+}
+
+.dark .ant-tag-green {
+  background: #166534 !important;
+  border-color: #22c55e !important;
+  color: #dcfce7 !important;
+}
+
+/* Dark mode - Progress */
+.dark .ant-progress-text {
+  color: #f1f5f9 !important;
+}
+
+.dark .ant-progress-bg {
+  background: #3b82f6 !important;
+}
+
+/* Dark mode - Checkbox */
+.dark .ant-checkbox-wrapper {
+  color: #f1f5f9 !important;
+}
+
+.dark .ant-checkbox-inner {
+  background: #334155 !important;
+  border-color: #475569 !important;
+}
+
+.dark .ant-checkbox-checked .ant-checkbox-inner {
+  background: #3b82f6 !important;
+  border-color: #3b82f6 !important;
+}
+
+/* Dark mode - Form */
+.dark .ant-form-item-label > label {
+  color: #f1f5f9 !important;
+}
+
+.dark .ant-form-item-required::before {
+  color: #ef4444 !important;
+}
+
+/* Dark mode - Switch */
+.dark .ant-switch {
+  background: #475569 !important;
+}
+
+.dark .ant-switch-checked {
+  background: #3b82f6 !important;
+}
+
+/* Dark mode - Modal */
+.dark .ant-modal-content {
+  background: #1e293b !important;
+  color: #f1f5f9 !important;
+}
+
+.dark .ant-modal-header {
+  background: #1e293b !important;
+  border-color: #334155 !important;
+}
+
+.dark .ant-modal-title {
+  color: #f1f5f9 !important;
+}
+
+.dark .ant-modal-footer {
+  border-color: #334155 !important;
+}
+
+.dark .ant-modal-close {
+  color: #94a3b8 !important;
+}
+
+.dark .ant-modal-close:hover {
+  color: #f1f5f9 !important;
+}
+
+/* Dark mode - Table */
+.dark .ant-table {
+  background: #1e293b !important;
+  color: #f1f5f9 !important;
+}
+
+.dark .ant-table-thead > tr > th {
+  background: #334155 !important;
+  color: #f1f5f9 !important;
+  border-color: #475569 !important;
+}
+
+.dark .ant-table-tbody > tr > td {
+  border-color: #334155 !important;
+  background: #1e293b !important;
+  color: #e2e8f0 !important;
+}
+
+.dark .ant-table-tbody > tr:hover > td {
+  background: #334155 !important;
+}
+
+/* Dark mode - Dropdown */
+.dark .ant-dropdown-menu {
+  background: #1e293b !important;
+  border-color: #334155 !important;
+}
+
+.dark .ant-dropdown-menu-item {
+  color: #f1f5f9 !important;
+}
+
+.dark .ant-dropdown-menu-item:hover {
+  background: #334155 !important;
+}
+
+/* Dark mode - Divider */
+.dark .ant-divider {
+  border-color: #334155 !important;
+}
+
+/* Dark mode - Spin */
+.dark .ant-spin-text {
+  color: #f1f5f9 !important;
+}
+
+/* Dark mode - Result */
+.dark .ant-result-title {
+  color: #f1f5f9 !important;
+}
+
+.dark .ant-result-subtitle {
+  color: #cbd5e1 !important;
+}
+
+/* Dark mode - Space */
+.dark .ant-space {
+  color: #f1f5f9 !important;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
