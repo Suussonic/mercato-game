@@ -159,7 +159,6 @@ export default function VotingPhase({ room, currentPlayer }: VotingPhaseProps) {
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {localRoom.players
-                .filter(p => p.id !== currentPlayer.id)
                 .map(player => (
                   <Card
                     key={player.id}
