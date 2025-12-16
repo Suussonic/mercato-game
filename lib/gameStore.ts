@@ -175,32 +175,34 @@ class GameStore {
 
     // Check how many players are still in the game (not folded)
     const playersNotFolded = room.players.filter(p => !p.hasFolded);
-    
+
     // Case 1: All players folded (0 left) - just skip to next turn
     if (playersNotFolded.length === 0) {
       this.nextTurn(room);
       return true;
     }
-    
+
     // Case 2: Only 1 player left - they win if they bet, otherwise skip
     if (playersNotFolded.length === 1) {
       const lastPlayer = playersNotFolded[0];
-      
       // Winner only gets character if they placed a bet
       if (lastPlayer.currentBet > 0) {
         lastPlayer.balance -= lastPlayer.currentBet;
-        // Only add character if player hasn't reached limit
         if (lastPlayer.characters.length < room.config.charactersPerPlayer) {
           lastPlayer.characters.push(room.gameState.currentCharacter);
         }
       }
-      
-      // Move to next turn
       this.nextTurn(room);
       return true;
     }
-    
-    // Case 3: 2+ players remain - game continues normally, don't pass the turn
+
+    // Nouvelle logique : attendre que tous les joueurs aient agi (misé ou couché)
+    // Un joueur a agi s'il a currentBet > 0 OU hasFolded === true
+    const allPlayersActed = room.players.every(p => p.hasFolded || p.currentBet > 0);
+    if (allPlayersActed) {
+      this.resolveTurn(roomCode);
+    }
+    // Sinon, on attend les autres joueurs
     return true;
   }
 
