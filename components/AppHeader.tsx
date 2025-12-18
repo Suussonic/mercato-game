@@ -1,7 +1,7 @@
 'use client';
 
 import { Layout, Select, Space, Typography } from 'antd';
-import { TrophyOutlined, GlobalOutlined, BulbOutlined } from '@ant-design/icons';
+import { TrophyOutlined, GlobalOutlined } from '@ant-design/icons';
 import { useTranslation } from 'react-i18next';
 
 const { Header } = Layout;
@@ -26,7 +26,7 @@ export default function AppHeader() {
         </Title>
         
         <Space size="middle" className="flex items-center">
-          <Space size="small" className="hidden md:flex items-center">
+          <Space size="small" className="flex items-center">
             <GlobalOutlined className="text-gray-600 dark:text-gray-300" />
             <Select
               value={i18n.language}
@@ -39,22 +39,7 @@ export default function AppHeader() {
               ]}
             />
           </Space>
-
         </Space>
-
-        {/* Mobile compact version */}
-        <div className="md:hidden flex items-center gap-2">
-          <Select
-            value={i18n.language}
-            onChange={handleLanguageChange}
-            size="small"
-            className="w-16"
-            options={[
-              { value: 'fr', label: 'FR' },
-              { value: 'en', label: 'EN' },
-            ]}
-          />
-        </div>
       </div>
     </Header>
   );
