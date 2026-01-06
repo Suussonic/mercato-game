@@ -1,4 +1,4 @@
-import { Room, Player, GameConfig, GameState, Character, Theme } from '@/types';
+import { Room, Player, GameConfig, GameState, Character, Theme } from "@/types";
 
 // Themes cache - will be loaded from API
 let themesCache: Theme[] = [];
@@ -37,13 +37,17 @@ class GameStore {
     return Math.random().toString(36).substring(2, 15);
   }
 
-  createRoom(isPrivate: boolean, password?: string, hostName?: string): { room: Room; player: Player } {
+  createRoom(
+    isPrivate: boolean,
+    password?: string,
+    hostName?: string
+  ): { room: Room; player: Player } {
     const code = this.generateRoomCode();
     const hostId = this.generatePlayerId();
-    
+
     const host: Player = {
       id: hostId,
-      name: hostName || 'Host',
+      name: hostName || "Host",
       roomCode: code,
       balance: 0,
       characters: [],
@@ -58,26 +62,30 @@ class GameStore {
       password,
       hostId,
       players: [host],
-      status: 'waiting',
+      status: "waiting",
     };
 
     this.rooms.set(code, room);
     return { room, player: host };
   }
 
-  joinRoom(code: string, password: string | undefined, playerName: string): { success: boolean; room?: Room; player?: Player; error?: string } {
+  joinRoom(
+    code: string,
+    password: string | undefined,
+    playerName: string
+  ): { success: boolean; room?: Room; player?: Player; error?: string } {
     const room = this.rooms.get(code);
-    
+
     if (!room) {
-      return { success: false, error: 'Room not found' };
+      return { success: false, error: "Room not found" };
     }
 
     if (room.isPrivate && room.password !== password) {
-      return { success: false, error: 'Invalid password' };
+      return { success: false, error: "Invalid password" };
     }
 
-    if (room.status !== 'waiting' && room.status !== 'configuring') {
-      return { success: false, error: 'Game already started' };
+    if (room.status !== "waiting" && room.status !== "configuring") {
+      return { success: false, error: "Game already started" };
     }
 
     const playerId = this.generatePlayerId();
@@ -93,7 +101,7 @@ class GameStore {
     };
 
     room.players.push(player);
-    
+
     return { success: true, room, player };
   }
 
@@ -102,7 +110,7 @@ class GameStore {
     if (!room) return false;
 
     // Initialize player balances
-    room.players.forEach(player => {
+    room.players.forEach((player) => {
       player.balance = config.startingBalance;
     });
 
@@ -119,7 +127,7 @@ class GameStore {
     if (room.players.length < 2) return false;
 
     // Reset all players to initial state
-    room.players.forEach(player => {
+    room.players.forEach((player) => {
       player.balance = room.config!.startingBalance;
       player.characters = [];
       player.currentBet = 0;
@@ -129,7 +137,10 @@ class GameStore {
 
     const gameState: GameState = {
       currentTurn: 1,
-      currentCharacter: this.getRandomCharacter(room.config.selectedCharacters, []),
+      currentCharacter: this.getRandomCharacter(
+        room.config.selectedCharacters,
+        []
+      ),
       usedCharacters: [],
       timerEndTime: Date.now() + room.config.turnDuration * 1000,
       votes: {},
@@ -141,7 +152,7 @@ class GameStore {
     }
 
     room.gameState = gameState;
-    room.status = 'playing';
+    room.status = "playing";
     return true;
   }
 
@@ -149,11 +160,12 @@ class GameStore {
     const room = this.rooms.get(roomCode);
     if (!room || !room.config) return false;
 
-    const player = room.players.find(p => p.id === playerId);
+    const player = room.players.find((p) => p.id === playerId);
     if (!player) return false;
 
     // Check if amount is valid (must be positive and within balance)
-    if (amount < 0 || amount > player.balance || !Number.isFinite(amount)) return false;
+    if (amount < 0 || amount > player.balance || !Number.isFinite(amount))
+      return false;
 
     // Check if player has reached character limit
     if (player.characters.length >= room.config.charactersPerPlayer) {
@@ -168,13 +180,13 @@ class GameStore {
     const room = this.rooms.get(roomCode);
     if (!room || !room.config || !room.gameState) return false;
 
-    const player = room.players.find(p => p.id === playerId);
+    const player = room.players.find((p) => p.id === playerId);
     if (!player) return false;
 
     player.hasFolded = true;
 
     // Check how many players are still in the game (not folded)
-    const playersNotFolded = room.players.filter(p => !p.hasFolded);
+    const playersNotFolded = room.players.filter((p) => !p.hasFolded);
 
     // Case 1: All players folded (0 left) - just skip to next turn
     if (playersNotFolded.length === 0) {
@@ -188,7 +200,12 @@ class GameStore {
       // Winner only gets character if they placed a bet
       if (lastPlayer.currentBet > 0) {
         lastPlayer.balance -= lastPlayer.currentBet;
-        if (lastPlayer.characters.length < room.config.charactersPerPlayer) {
+
+        // Only add character if player hasn't reached limit AND currentCharacter exists
+        if (
+          lastPlayer.characters.length < room.config.charactersPerPlayer &&
+          room.gameState.currentCharacter !== null
+        ) {
           lastPlayer.characters.push(room.gameState.currentCharacter);
         }
       }
@@ -198,7 +215,9 @@ class GameStore {
 
     // Nouvelle logique : attendre que tous les joueurs aient agi (misé ou couché)
     // Un joueur a agi s'il a currentBet > 0 OU hasFolded === true
-    const allPlayersActed = room.players.every(p => p.hasFolded || p.currentBet > 0);
+    const allPlayersActed = room.players.every(
+      (p) => p.hasFolded || p.currentBet > 0
+    );
     if (allPlayersActed) {
       this.resolveTurn(roomCode);
     }
@@ -211,29 +230,35 @@ class GameStore {
     if (!room || !room.gameState || !room.config) return;
 
     // Check players who haven't folded
-    const playersNotFolded = room.players.filter(p => !p.hasFolded);
-    
+    const playersNotFolded = room.players.filter((p) => !p.hasFolded);
+
     // If only one player hasn't folded
     if (playersNotFolded.length === 1 && room.gameState.currentCharacter) {
       const lastPlayer = playersNotFolded[0];
-      
+
       // Only give character if this player has bet something
       if (lastPlayer.currentBet > 0) {
         lastPlayer.balance -= lastPlayer.currentBet;
-        // Only add character if player hasn't reached limit
-        if (lastPlayer.characters.length < room.config.charactersPerPlayer) {
+
+        // Only add character if player hasn't reached limit and currentCharacter exists
+        if (
+          lastPlayer.characters.length < room.config.charactersPerPlayer &&
+          room.gameState.currentCharacter
+        ) {
           lastPlayer.characters.push(room.gameState.currentCharacter);
         }
       }
       // If no bet was made, just skip the turn
-      
+
       this.nextTurn(room);
       return;
     }
 
     // Get players who have bet (and not folded)
-    const activePlayers = room.players.filter(p => !p.hasFolded && p.currentBet > 0);
-    
+    const activePlayers = room.players.filter(
+      (p) => !p.hasFolded && p.currentBet > 0
+    );
+
     if (activePlayers.length === 0) {
       // No one bet, move to next turn
       this.nextTurn(room);
@@ -241,8 +266,8 @@ class GameStore {
     }
 
     // Find highest bet
-    const maxBet = Math.max(...activePlayers.map(p => p.currentBet));
-    const winners = activePlayers.filter(p => p.currentBet === maxBet);
+    const maxBet = Math.max(...activePlayers.map((p) => p.currentBet));
+    const winners = activePlayers.filter((p) => p.currentBet === maxBet);
 
     if (winners.length === 1 && room.gameState.currentCharacter) {
       // Winner gets the character
@@ -254,7 +279,7 @@ class GameStore {
       }
     } else if (winners.length > 1) {
       // Tie, no one gets the character but everyone pays their bet
-      winners.forEach(player => {
+      winners.forEach((player) => {
         player.balance -= player.currentBet;
       });
     }
@@ -267,7 +292,7 @@ class GameStore {
     if (!room.gameState || !room.config) return;
 
     // Reset player states
-    room.players.forEach(player => {
+    room.players.forEach((player) => {
       player.currentBet = 0;
       player.hasFolded = false;
     });
@@ -283,11 +308,12 @@ class GameStore {
         room.config.selectedCharacters,
         room.gameState.usedCharacters
       );
-      
+
       if (nextChar) {
         room.gameState.currentCharacter = nextChar;
         room.gameState.usedCharacters.push(nextChar);
-        room.gameState.timerEndTime = Date.now() + room.config.turnDuration * 1000;
+        room.gameState.timerEndTime =
+          Date.now() + room.config.turnDuration * 1000;
       } else {
         // No more characters
         this.startVoting(room);
@@ -297,20 +323,20 @@ class GameStore {
 
   startVoting(room: Room): void {
     if (!room.gameState) return;
-    
-    room.status = 'voting';
+
+    room.status = "voting";
     room.gameState.voteTimerEndTime = Date.now() + 60000; // 60 seconds
     room.gameState.votes = {};
-    room.players.forEach(p => p.hasVoted = false);
+    room.players.forEach((p) => (p.hasVoted = false));
   }
 
   vote(roomCode: string, voterId: string, targetPlayerId: string): boolean {
     const room = this.rooms.get(roomCode);
-    if (!room || !room.gameState || room.status !== 'voting') return false;
+    if (!room || !room.gameState || room.status !== "voting") return false;
 
-    const voter = room.players.find(p => p.id === voterId);
-    const target = room.players.find(p => p.id === targetPlayerId);
-    
+    const voter = room.players.find((p) => p.id === voterId);
+    const target = room.players.find((p) => p.id === targetPlayerId);
+
     if (!voter || !target || voter.hasVoted) return false;
 
     // Prevent self-voting
@@ -332,20 +358,21 @@ class GameStore {
 
     // Count votes
     const voteCounts: Record<string, number> = {};
-    Object.values(room.gameState.votes).forEach(playerId => {
+    Object.values(room.gameState.votes).forEach((playerId) => {
       voteCounts[playerId] = (voteCounts[playerId] || 0) + 1;
     });
 
-    room.status = 'finished';
+    room.status = "finished";
   }
 
-  private getRandomCharacter(pool: Character[], used: Character[]): Character | null {
-    const available = pool.filter(
-      c => !used.find(u => u.name === c.name)
-    );
-    
+  private getRandomCharacter(
+    pool: Character[],
+    used: Character[]
+  ): Character | null {
+    const available = pool.filter((c) => !used.find((u) => u.name === c.name));
+
     if (available.length === 0) return null;
-    
+
     const randomIndex = Math.floor(Math.random() * available.length);
     return available[randomIndex];
   }
@@ -357,28 +384,28 @@ class GameStore {
   async loadThemes(): Promise<Theme[]> {
     try {
       // Load themes from API (data folder)
-      const response = await fetch('/api/themes');
+      const response = await fetch("/api/themes");
       const data = await response.json();
       const apiThemes = data.themes || [];
-      
+
       // Load custom themes from localStorage
       let customThemes: Theme[] = [];
-      if (typeof window !== 'undefined') {
-        const saved = localStorage.getItem('customDatasets');
+      if (typeof window !== "undefined") {
+        const saved = localStorage.getItem("customDatasets");
         if (saved) {
           try {
             customThemes = JSON.parse(saved);
           } catch (e) {
-            console.error('Failed to parse custom themes:', e);
+            console.error("Failed to parse custom themes:", e);
           }
         }
       }
-      
+
       // Merge both, custom themes first
       themesCache = [...customThemes, ...apiThemes];
       return themesCache;
     } catch (error) {
-      console.error('Failed to load themes:', error);
+      console.error("Failed to load themes:", error);
       return [];
     }
   }
