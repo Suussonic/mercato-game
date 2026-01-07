@@ -3,6 +3,8 @@
 
 Mercato est un jeu web compétitif inspiré du mercato sportif, où les joueurs s'affrontent pour constituer la meilleure équipe de personnages issus de différents univers (par exemple Dragon Ball, One Piece, etc.). Le but est de drafter, parier, voter et gérer des équipes dans des salles multijoueurs, le tout en temps réel.
 
+https://mercatogame.fr/
+
 ## Fonctionnalités principales
 - Création et gestion de salles de jeu multijoueurs
 - Sélection (draft) de personnages
@@ -53,3 +55,6 @@ Le site sera accessible sur [http://localhost:3000](http://localhost:3000).
 ## Personnalisation
 - Ajoutez vos propres personnages dans le dossier `data/` ou via l'interface DatasetBuilder.
 - Modifiez les styles via Tailwind dans `app/globals.css`.
+
+## Remerciement
+Merci à @luxlas pour son aide sur l'hébergement du projet.
