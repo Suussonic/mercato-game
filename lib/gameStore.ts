@@ -394,7 +394,8 @@ class GameStore {
         const saved = localStorage.getItem("customDatasets");
         if (saved) {
           try {
-            customThemes = JSON.parse(saved);
+            const parsed = JSON.parse(saved);
+            customThemes = this.normalizeCustomThemes(parsed);
           } catch (e) {
             console.error("Failed to parse custom themes:", e);
           }
@@ -408,6 +409,43 @@ class GameStore {
       console.error("Failed to load themes:", error);
       return [];
     }
+  }
+
+  private normalizeCustomThemes(raw: any): Theme[] {
+    if (!Array.isArray(raw)) return [];
+
+    const toCharacters = (items: any): Character[] => {
+      if (!Array.isArray(items)) return [];
+      return items
+        .map((char) => {
+          if (!char || typeof char !== "object") return null;
+          if (typeof char.name !== "string" || typeof char.imageUrl !== "string") return null;
+          return { name: char.name, imageUrl: char.imageUrl } as Character;
+        })
+        .filter((char): char is Character => Boolean(char));
+    };
+
+    return raw
+      .map((item) => {
+        if (!item || typeof item !== "object") return null;
+
+        // Theme with arcs
+        if (typeof item.name === "string" && Array.isArray(item.arcs)) {
+          return item as Theme;
+        }
+
+        // Dataset with characters
+        if (typeof item.name === "string" && Array.isArray(item.characters)) {
+          const characters = toCharacters(item.characters);
+          return {
+            name: item.name,
+            arcs: [{ name: "All", characters }],
+          } as Theme;
+        }
+
+        return null;
+      })
+      .filter((theme): theme is Theme => Boolean(theme));
   }
 
   getAvailableThemes(): Theme[] {

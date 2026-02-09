@@ -139,16 +139,29 @@ export default function GameConfigForm({ onConfigComplete }: GameConfigFormProps
       return;
     }
 
-    // Check if this is a custom theme (from localStorage)
+    // Check if this is a custom dataset (from localStorage)
     let customTheme: Theme | undefined;
     if (typeof window !== 'undefined') {
       const saved = localStorage.getItem('customDatasets');
       if (saved) {
         try {
-          const customThemes = JSON.parse(saved) as Theme[];
-          customTheme = customThemes.find(t => t.name === selectedTheme.name);
+          const customDatasets = JSON.parse(saved) as any[];
+          const match = Array.isArray(customDatasets)
+            ? customDatasets.find(d => d && typeof d.name === 'string' && d.name === selectedTheme.name)
+            : null;
+
+          if (match) {
+            if (Array.isArray(match.arcs)) {
+              customTheme = match as Theme;
+            } else if (Array.isArray(match.characters)) {
+              customTheme = {
+                name: match.name,
+                arcs: [{ name: 'All', characters: match.characters }],
+              } as Theme;
+            }
+          }
         } catch (e) {
-          console.error('Failed to check custom themes:', e);
+          console.error('Failed to check custom datasets:', e);
         }
       }
     }

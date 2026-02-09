@@ -1,9 +1,9 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import { Card, Form, Input, Button, Space, Flex, Modal, Typography, App, Tag, Divider } from 'antd';
-import { PlusOutlined, EditOutlined, DeleteOutlined, ArrowLeftOutlined, SaveOutlined, DownloadOutlined, FolderOpenOutlined, UploadOutlined } from '@ant-design/icons';
-import { Theme, Arc, Character } from '@/types';
+import { Card, Form, Input, Button, Space, Flex, Modal, Typography, App, Tag } from 'antd';
+import { PlusOutlined, EditOutlined, DeleteOutlined, ArrowLeftOutlined, DownloadOutlined, FolderOpenOutlined, UploadOutlined } from '@ant-design/icons';
+import { Arc, Character } from '@/types';
 
 const { Title, Text } = Typography;
 const { TextArea } = Input;
@@ -14,101 +14,185 @@ interface DatasetBuilderProps {
 
 type View = 'themes' | 'arcs' | 'characters';
 
+interface Dataset {
+  name: string;
+  characters: Character[];
+  arcs?: Arc[];
+}
+
 export default function DatasetBuilder({ onClose }: DatasetBuilderProps) {
   const [view, setView] = useState<View>('themes');
-  const [themes, setThemes] = useState<Theme[]>([]);
-  const [selectedTheme, setSelectedTheme] = useState<Theme | null>(null);
-  const [selectedThemeIndex, setSelectedThemeIndex] = useState<number | null>(null);
+  const [datasets, setDatasets] = useState<Dataset[]>([]);
+  const [selectedDataset, setSelectedDataset] = useState<Dataset | null>(null);
+  const [selectedDatasetIndex, setSelectedDatasetIndex] = useState<number | null>(null);
   const [currentArc, setCurrentArc] = useState<Arc | null>(null);
   const [currentArcIndex, setCurrentArcIndex] = useState<number | null>(null);
   const [editingCharIndex, setEditingCharIndex] = useState<number | null>(null);
-  const [isThemeModalOpen, setIsThemeModalOpen] = useState(false);
+  const [isDatasetModalOpen, setIsDatasetModalOpen] = useState(false);
   const [isArcModalOpen, setIsArcModalOpen] = useState(false);
   const [isCharModalOpen, setIsCharModalOpen] = useState(false);
-  const [editingThemeIndex, setEditingThemeIndex] = useState<number | null>(null);
+  const [editingDatasetIndex, setEditingDatasetIndex] = useState<number | null>(null);
   const [editingArcIndex, setEditingArcIndex] = useState<number | null>(null);
-  const [themeForm] = Form.useForm();
+  const [datasetForm] = Form.useForm();
   const [arcForm] = Form.useForm();
   const [charForm] = Form.useForm();
   const { message, modal } = App.useApp();
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  // Load all themes from localStorage on mount
+  // Load all datasets from localStorage on mount
   useEffect(() => {
     const saved = localStorage.getItem('customDatasets');
     if (saved) {
       try {
         const parsed = JSON.parse(saved);
-        setThemes(parsed);
+        const normalized = normalizeDatasets(parsed);
+        setDatasets(normalized);
       } catch (e) {
         console.error('Failed to load datasets:', e);
       }
     }
   }, []);
 
-  // Save all themes to localStorage whenever they change
+  // Save all datasets to localStorage whenever they change
   useEffect(() => {
-    if (themes.length > 0) {
-      localStorage.setItem('customDatasets', JSON.stringify(themes));
+    if (datasets.length > 0) {
+      localStorage.setItem('customDatasets', JSON.stringify(datasets));
       // Dispatch custom event to notify other components
       window.dispatchEvent(new CustomEvent('customDatasetsChanged'));
+    } else {
+      localStorage.removeItem('customDatasets');
     }
-  }, [themes]);
+  }, [datasets]);
 
-  // Theme management
-  const handleAddTheme = () => {
-    setEditingThemeIndex(null);
-    themeForm.resetFields();
-    setIsThemeModalOpen(true);
+  const normalizeDatasets = (raw: any): Dataset[] => {
+    if (!Array.isArray(raw)) return [];
+
+    return raw
+      .map((item) => {
+        if (!item || typeof item !== 'object') return null;
+
+        if (typeof item.name === 'string' && Array.isArray(item.characters)) {
+          const characters = parseCharactersArray(item.characters);
+          if (!characters) return null;
+          return { name: item.name, characters };
+        }
+
+        if (typeof item.name === 'string' && Array.isArray(item.arcs)) {
+          const arcs = parseArcsArray(item.arcs);
+          if (!arcs) return null;
+          return { name: item.name, arcs, characters: flattenArcs(arcs) };
+        }
+
+        return null;
+      })
+      .filter((dataset): dataset is Dataset => Boolean(dataset));
   };
 
-  const handleEditTheme = (index: number) => {
-    setEditingThemeIndex(index);
-    themeForm.setFieldsValue({ themeName: themes[index].name });
-    setIsThemeModalOpen(true);
+  const parseCharactersArray = (raw: any): Character[] | null => {
+    if (!Array.isArray(raw)) return null;
+    if (raw.length === 0) return [];
+
+    const characters = raw.map((char) => {
+      if (!char || typeof char !== 'object') return null;
+      if (typeof char.name !== 'string' || typeof char.imageUrl !== 'string') {
+        return null;
+      }
+      return { name: char.name, imageUrl: char.imageUrl } as Character;
+    });
+
+    if (characters.some((char) => char === null)) return null;
+    return characters as Character[];
   };
 
-  const handleDeleteTheme = (index: number) => {
+  const parseArcsArray = (raw: any): Arc[] | null => {
+    if (!Array.isArray(raw)) return null;
+
+    const arcs = raw.map((arc) => {
+      if (!arc || typeof arc !== 'object') return null;
+      if (typeof arc.name !== 'string' || !Array.isArray(arc.characters)) return null;
+      const characters = parseCharactersArray(arc.characters);
+      if (!characters) return null;
+      return { name: arc.name, characters } as Arc;
+    });
+
+    if (arcs.some((arc) => arc === null)) return null;
+    return arcs as Arc[];
+  };
+
+  const flattenArcs = (arcs: Arc[]): Character[] => {
+    return arcs.flatMap((arc) => arc.characters);
+  };
+
+  const getDatasetCharacters = (dataset: Dataset): Character[] => {
+    if (dataset.arcs && dataset.arcs.length > 0) return flattenArcs(dataset.arcs);
+    return dataset.characters;
+  };
+
+  const updateDatasetArcs = (datasetIndex: number, arcs: Arc[]) => {
+    const newDatasets = [...datasets];
+    const characters = flattenArcs(arcs);
+    newDatasets[datasetIndex] = { ...newDatasets[datasetIndex], arcs, characters };
+    setDatasets(newDatasets);
+    setSelectedDataset({ ...newDatasets[datasetIndex] });
+  };
+
+  // Dataset management
+  const handleAddDataset = () => {
+    setEditingDatasetIndex(null);
+    datasetForm.resetFields();
+    setIsDatasetModalOpen(true);
+  };
+
+  const handleEditDataset = (index: number) => {
+    setEditingDatasetIndex(index);
+    datasetForm.setFieldsValue({ datasetName: datasets[index].name });
+    setIsDatasetModalOpen(true);
+  };
+
+  const handleDeleteDataset = (index: number) => {
     modal.confirm({
-      title: 'Supprimer ce thème ?',
+      title: 'Supprimer ce dataset ?',
       content: 'Cette action est irréversible.',
       okText: 'Supprimer',
       okType: 'danger',
       cancelText: 'Annuler',
       onOk: () => {
-        const newThemes = [...themes];
-        newThemes.splice(index, 1);
-        setThemes(newThemes);
-        if (newThemes.length === 0) {
-          localStorage.removeItem('customDatasets');
-        }
-        message.success('Thème supprimé');
+        const newDatasets = [...datasets];
+        newDatasets.splice(index, 1);
+        setDatasets(newDatasets);
+        message.success('Dataset supprimé');
       },
     });
   };
 
-  const handleSaveTheme = (values: any) => {
-    const newThemes = [...themes];
-    if (editingThemeIndex !== null) {
-      newThemes[editingThemeIndex] = { ...newThemes[editingThemeIndex], name: values.themeName };
-      message.success('Thème modifié');
+  const handleSaveDataset = (values: any) => {
+    const newDatasets = [...datasets];
+    if (editingDatasetIndex !== null) {
+      newDatasets[editingDatasetIndex] = { ...newDatasets[editingDatasetIndex], name: values.datasetName };
+      message.success('Dataset modifié');
     } else {
-      newThemes.push({ name: values.themeName, arcs: [] });
-      message.success('Thème ajouté');
+      newDatasets.push({ name: values.datasetName, characters: [] });
+      message.success('Dataset ajouté');
     }
-    setThemes(newThemes);
-    setIsThemeModalOpen(false);
+    setDatasets(newDatasets);
+    setIsDatasetModalOpen(false);
   };
 
-  const handleOpenTheme = (theme: Theme, index: number) => {
-    setSelectedTheme(theme);
-    setSelectedThemeIndex(index);
-    setView('arcs');
+  const handleOpenDataset = (dataset: Dataset, index: number) => {
+    setSelectedDataset(dataset);
+    setSelectedDatasetIndex(index);
+    if (dataset.arcs && dataset.arcs.length > 0) {
+      setView('arcs');
+    } else {
+      setView('characters');
+    }
   };
 
-  const handleBackToThemes = () => {
-    setSelectedTheme(null);
-    setSelectedThemeIndex(null);
+  const handleBackToDatasets = () => {
+    setSelectedDataset(null);
+    setSelectedDatasetIndex(null);
+    setCurrentArc(null);
+    setCurrentArcIndex(null);
     setView('themes');
   };
 
@@ -120,14 +204,15 @@ export default function DatasetBuilder({ onClose }: DatasetBuilderProps) {
   };
 
   const handleEditArc = (index: number) => {
-    if (!selectedTheme) return;
+    if (!selectedDataset?.arcs) return;
     setEditingArcIndex(index);
-    arcForm.setFieldsValue({ arcName: selectedTheme.arcs[index].name });
+    arcForm.setFieldsValue({ arcName: selectedDataset.arcs[index].name });
     setIsArcModalOpen(true);
   };
 
   const handleDeleteArc = (index: number) => {
-    if (selectedThemeIndex === null) return;
+    if (!selectedDataset?.arcs || selectedDatasetIndex === null) return;
+
     modal.confirm({
       title: 'Supprimer cet arc ?',
       content: 'Cette action est irréversible.',
@@ -135,33 +220,33 @@ export default function DatasetBuilder({ onClose }: DatasetBuilderProps) {
       okType: 'danger',
       cancelText: 'Annuler',
       onOk: () => {
-        const newThemes = [...themes];
-        const newArcs = [...newThemes[selectedThemeIndex].arcs];
+        const newArcs = [...selectedDataset.arcs!];
         newArcs.splice(index, 1);
-        newThemes[selectedThemeIndex] = { ...newThemes[selectedThemeIndex], arcs: newArcs };
-        setThemes(newThemes);
-        setSelectedTheme({ ...selectedTheme!, arcs: newArcs });
+        updateDatasetArcs(selectedDatasetIndex, newArcs);
+        if (currentArcIndex === index) {
+          setCurrentArc(null);
+          setCurrentArcIndex(null);
+        } else if (currentArcIndex !== null && currentArcIndex > index) {
+          setCurrentArcIndex(currentArcIndex - 1);
+        }
         message.success('Arc supprimé');
       },
     });
   };
 
   const handleSaveArc = (values: any) => {
-    if (selectedThemeIndex === null || !selectedTheme) return;
-    const newThemes = [...themes];
-    const newArcs = [...newThemes[selectedThemeIndex].arcs];
-    
+    if (selectedDatasetIndex === null || !selectedDataset) return;
+    const currentArcs = selectedDataset.arcs ? [...selectedDataset.arcs] : [];
+
     if (editingArcIndex !== null) {
-      newArcs[editingArcIndex] = { ...newArcs[editingArcIndex], name: values.arcName };
+      currentArcs[editingArcIndex] = { ...currentArcs[editingArcIndex], name: values.arcName };
       message.success('Arc modifié');
     } else {
-      newArcs.push({ name: values.arcName, characters: [] });
+      currentArcs.push({ name: values.arcName, characters: [] });
       message.success('Arc ajouté');
     }
-    
-    newThemes[selectedThemeIndex] = { ...newThemes[selectedThemeIndex], arcs: newArcs };
-    setThemes(newThemes);
-    setSelectedTheme({ ...selectedTheme, arcs: newArcs });
+
+    updateDatasetArcs(selectedDatasetIndex, currentArcs);
     setIsArcModalOpen(false);
   };
 
@@ -185,16 +270,26 @@ export default function DatasetBuilder({ onClose }: DatasetBuilderProps) {
   };
 
   const handleEditCharacter = (index: number) => {
-    if (!currentArc) return;
-    const char = currentArc.characters[index];
+    if (!selectedDataset) return;
+    const isArcMode = Boolean(selectedDataset.arcs && selectedDataset.arcs.length > 0);
+    if (isArcMode) {
+      if (!currentArc) return;
+      const char = currentArc.characters[index];
+      setEditingCharIndex(index);
+      charForm.setFieldsValue({ charName: char.name, charUrl: char.imageUrl });
+      setIsCharModalOpen(true);
+      return;
+    }
+
+    const char = selectedDataset.characters[index];
     setEditingCharIndex(index);
     charForm.setFieldsValue({ charName: char.name, charUrl: char.imageUrl });
     setIsCharModalOpen(true);
   };
 
   const handleDeleteCharacter = (index: number) => {
-    if (!currentArc || selectedThemeIndex === null || currentArcIndex === null) return;
-    
+    if (selectedDatasetIndex === null || !selectedDataset) return;
+
     modal.confirm({
       title: 'Supprimer ce personnage ?',
       content: 'Cette action est irréversible.',
@@ -202,26 +297,56 @@ export default function DatasetBuilder({ onClose }: DatasetBuilderProps) {
       okType: 'danger',
       cancelText: 'Annuler',
       onOk: () => {
-        const newThemes = [...themes];
-        const newArcs = [...newThemes[selectedThemeIndex].arcs];
-        const characters = [...newArcs[currentArcIndex].characters];
+        const isArcMode = Boolean(selectedDataset.arcs && selectedDataset.arcs.length > 0);
+        if (isArcMode) {
+          if (!currentArc || currentArcIndex === null) return;
+          const newArcs = [...selectedDataset.arcs!];
+          const characters = [...newArcs[currentArcIndex].characters];
+          characters.splice(index, 1);
+          newArcs[currentArcIndex] = { ...newArcs[currentArcIndex], characters };
+          updateDatasetArcs(selectedDatasetIndex, newArcs);
+          setCurrentArc({ ...newArcs[currentArcIndex] });
+          message.success('Personnage supprimé');
+          return;
+        }
+
+        const newDatasets = [...datasets];
+        const characters = [...newDatasets[selectedDatasetIndex].characters];
         characters.splice(index, 1);
-        newArcs[currentArcIndex] = { ...newArcs[currentArcIndex], characters };
-        newThemes[selectedThemeIndex] = { ...newThemes[selectedThemeIndex], arcs: newArcs };
-        setThemes(newThemes);
-        setCurrentArc({ ...currentArc, characters });
-        setSelectedTheme({ ...selectedTheme!, arcs: newArcs });
+        newDatasets[selectedDatasetIndex] = { ...newDatasets[selectedDatasetIndex], characters };
+        setDatasets(newDatasets);
+        setSelectedDataset({ ...selectedDataset, characters });
         message.success('Personnage supprimé');
       },
     });
   };
 
   const handleSaveCharacter = (values: any) => {
-    if (!currentArc || selectedThemeIndex === null || currentArcIndex === null) return;
+    if (!selectedDataset || selectedDatasetIndex === null) return;
 
-    const newThemes = [...themes];
-    const newArcs = [...newThemes[selectedThemeIndex].arcs];
-    const characters = [...newArcs[currentArcIndex].characters];
+    const isArcMode = Boolean(selectedDataset.arcs && selectedDataset.arcs.length > 0);
+    if (isArcMode) {
+      if (!currentArc || currentArcIndex === null) return;
+      const newArcs = [...selectedDataset.arcs!];
+      const characters = [...newArcs[currentArcIndex].characters];
+
+      if (editingCharIndex !== null) {
+        characters[editingCharIndex] = { name: values.charName, imageUrl: values.charUrl };
+        message.success('Personnage modifié');
+      } else {
+        characters.push({ name: values.charName, imageUrl: values.charUrl });
+        message.success('Personnage ajouté');
+      }
+
+      newArcs[currentArcIndex] = { ...newArcs[currentArcIndex], characters };
+      updateDatasetArcs(selectedDatasetIndex, newArcs);
+      setCurrentArc({ ...newArcs[currentArcIndex] });
+      setIsCharModalOpen(false);
+      return;
+    }
+
+    const newDatasets = [...datasets];
+    const characters = [...newDatasets[selectedDatasetIndex].characters];
     
     if (editingCharIndex !== null) {
       characters[editingCharIndex] = { name: values.charName, imageUrl: values.charUrl };
@@ -230,66 +355,44 @@ export default function DatasetBuilder({ onClose }: DatasetBuilderProps) {
       characters.push({ name: values.charName, imageUrl: values.charUrl });
       message.success('Personnage ajouté');
     }
-    
-    newArcs[currentArcIndex] = { ...newArcs[currentArcIndex], characters };
-    newThemes[selectedThemeIndex] = { ...newThemes[selectedThemeIndex], arcs: newArcs };
-    setThemes(newThemes);
-    setCurrentArc({ ...currentArc, characters });
-    setSelectedTheme({ ...selectedTheme!, arcs: newArcs });
+
+    newDatasets[selectedDatasetIndex] = { ...newDatasets[selectedDatasetIndex], characters };
+    setDatasets(newDatasets);
+    setSelectedDataset({ ...selectedDataset, characters });
     setIsCharModalOpen(false);
   };
 
-  const handleDownloadTheme = (themeIndex: number) => {
-    const theme = themes[themeIndex];
-    const dataStr = JSON.stringify(theme, null, 2);
+  const handleDownloadDataset = (datasetIndex: number) => {
+    const dataset = datasets[datasetIndex];
+    const hasArcs = Boolean(dataset.arcs && dataset.arcs.length > 0);
+    const exportPayload = hasArcs
+      ? { name: dataset.name, arcs: dataset.arcs }
+      : dataset.characters;
+    const dataStr = JSON.stringify(exportPayload, null, 2);
     const dataBlob = new Blob([dataStr], { type: 'application/json' });
     const url = URL.createObjectURL(dataBlob);
     const link = document.createElement('a');
     link.href = url;
-    link.download = `${theme.name}.json`;
+    link.download = `${dataset.name}.json`;
     link.click();
     URL.revokeObjectURL(url);
-    message.success('Thème téléchargé !');
+    message.success('Dataset téléchargé !');
   };
 
   const handleClearAll = () => {
     modal.confirm({
-      title: 'Effacer tous les thèmes ?',
+      title: 'Effacer tous les datasets ?',
       content: 'Cette action supprimera toutes vos données.',
       okText: 'Effacer',
       okType: 'danger',
       cancelText: 'Annuler',
       onOk: () => {
-        localStorage.removeItem('customDatasets');
-        setThemes([]);
-        setSelectedTheme(null);
-        setCurrentArc(null);
+        setDatasets([]);
+        setSelectedDataset(null);
         setView('themes');
-        message.success('Tous les thèmes effacés');
-        // Notify other components
-        window.dispatchEvent(new CustomEvent('customDatasetsChanged'));
+        message.success('Tous les datasets effacés');
       },
     });
-  };
-
-  const validateThemeJSON = (data: any): data is Theme => {
-    if (!data || typeof data !== 'object') return false;
-    if (typeof data.name !== 'string' || !data.name) return false;
-    if (!Array.isArray(data.arcs)) return false;
-    
-    for (const arc of data.arcs) {
-      if (!arc || typeof arc !== 'object') return false;
-      if (typeof arc.name !== 'string' || !arc.name) return false;
-      if (!Array.isArray(arc.characters)) return false;
-      
-      for (const char of arc.characters) {
-        if (!char || typeof char !== 'object') return false;
-        if (typeof char.name !== 'string' || !char.name) return false;
-        if (typeof char.imageUrl !== 'string' || !char.imageUrl) return false;
-      }
-    }
-    
-    return true;
   };
 
   const handleImportJSON = () => {
@@ -304,30 +407,52 @@ export default function DatasetBuilder({ onClose }: DatasetBuilderProps) {
     reader.onload = (event) => {
       try {
         const json = JSON.parse(event.target?.result as string);
-        
-        if (!validateThemeJSON(json)) {
-          message.error('JSON incompatible. Le fichier doit contenir un thème valide avec name, arcs, et characters.');
+        const fileName = file.name.replace(/\.json$/i, '').trim() || 'Dataset';
+        let datasetName = fileName;
+        let characters: Character[] = [];
+        let arcs: Arc[] | undefined;
+
+        if (Array.isArray(json)) {
+          const parsedCharacters = parseCharactersArray(json);
+          if (!parsedCharacters) {
+            message.error('JSON incompatible. Le fichier doit être un tableau de personnages { name, imageUrl }.');
+            return;
+          }
+          characters = parsedCharacters;
+        } else if (json && typeof json === 'object' && Array.isArray(json.arcs)) {
+          const parsedArcs = parseArcsArray(json.arcs);
+          if (!parsedArcs) {
+            message.error('JSON incompatible. Le fichier doit contenir des arcs valides.');
+            return;
+          }
+          arcs = parsedArcs;
+          characters = flattenArcs(parsedArcs);
+          if (typeof json.name === 'string' && json.name.trim().length > 0) {
+            datasetName = json.name.trim();
+          }
+        } else {
+          message.error('JSON incompatible. Le fichier doit être un tableau de personnages ou un objet avec arcs.');
           return;
         }
 
-        // Check if theme already exists
-        const existingIndex = themes.findIndex(t => t.name === json.name);
+        // Check if dataset already exists
+        const existingIndex = datasets.findIndex(d => d.name === datasetName);
         if (existingIndex !== -1) {
           modal.confirm({
-            title: 'Thème existant',
-            content: `Un thème nommé "${json.name}" existe déjà. Voulez-vous le remplacer ?`,
+            title: 'Dataset existant',
+            content: `Un dataset nommé "${datasetName}" existe déjà. Voulez-vous le remplacer ?`,
             okText: 'Remplacer',
             cancelText: 'Annuler',
             onOk: () => {
-              const newThemes = [...themes];
-              newThemes[existingIndex] = json;
-              setThemes(newThemes);
-              message.success('Thème remplacé avec succès !');
+              const newDatasets = [...datasets];
+              newDatasets[existingIndex] = { name: datasetName, characters, arcs };
+              setDatasets(newDatasets);
+              message.success('Dataset remplacé avec succès !');
             },
           });
         } else {
-          setThemes([...themes, json]);
-          message.success('Thème importé avec succès !');
+          setDatasets([...datasets, { name: datasetName, characters, arcs }]);
+          message.success('Dataset importé avec succès !');
         }
       } catch (error) {
         message.error('JSON incompatible. Erreur de parsing du fichier.');
@@ -343,31 +468,54 @@ export default function DatasetBuilder({ onClose }: DatasetBuilderProps) {
   };
 
   // View: Character management
-  if (view === 'characters' && currentArc) {
+  if (view === 'characters' && selectedDataset) {
+    const isArcMode = Boolean(selectedDataset.arcs && selectedDataset.arcs.length > 0);
+    if (isArcMode && !currentArc) return null;
+
     return (
       <Card 
         title={
           <Space>
-            <Button icon={<ArrowLeftOutlined />} onClick={handleBackToArcs}>
-              Retour aux arcs
+            <Button icon={<ArrowLeftOutlined />} onClick={isArcMode ? handleBackToArcs : handleBackToDatasets}>
+              {isArcMode ? 'Retour aux arcs' : 'Retour aux datasets'}
             </Button>
-            <Text strong>{selectedTheme?.name}</Text>
-            <Text type="secondary">›</Text>
-            <Text strong>{currentArc.name}</Text>
-            <Tag color="blue">{currentArc.characters.length} personnages</Tag>
+            <Text strong>{selectedDataset.name}</Text>
+            {isArcMode && currentArc && (
+              <>
+                <Text type="secondary">›</Text>
+                <Text strong>{currentArc.name}</Text>
+              </>
+            )}
+            <Tag color="blue">
+              {isArcMode ? currentArc!.characters.length : selectedDataset.characters.length} personnages
+            </Tag>
           </Space>
         }
         extra={
-          <Button type="primary" icon={<PlusOutlined />} onClick={handleAddCharacter}>
-            Ajouter un personnage
-          </Button>
+          <Space>
+            {!isArcMode && (
+              <Button onClick={() => {
+                if (selectedDatasetIndex === null) return;
+                const arcs = [{ name: 'All', characters: [...selectedDataset.characters] }];
+                updateDatasetArcs(selectedDatasetIndex, arcs);
+                setCurrentArc(arcs[0]);
+                setCurrentArcIndex(0);
+                setView('arcs');
+              }}>
+                Activer les arcs
+              </Button>
+            )}
+            <Button type="primary" icon={<PlusOutlined />} onClick={handleAddCharacter}>
+              Ajouter un personnage
+            </Button>
+          </Space>
         }
       >
-        {currentArc.characters.length === 0 ? (
+        {(isArcMode ? currentArc!.characters.length : selectedDataset.characters.length) === 0 ? (
           <div className="text-center py-8 text-gray-400">Aucun personnage. Ajoutez-en un !</div>
         ) : (
           <Flex vertical gap="small">
-            {currentArc.characters.map((char, index) => (
+            {(isArcMode ? currentArc!.characters : selectedDataset.characters).map((char, index) => (
               <Card key={index} size="small">
                 <Flex justify="space-between" align="center">
                   <div className="flex-1">
@@ -425,16 +573,17 @@ export default function DatasetBuilder({ onClose }: DatasetBuilderProps) {
   }
 
   // View: Arc management
-  if (view === 'arcs' && selectedTheme) {
+  if (view === 'arcs' && selectedDataset) {
+    const arcs = selectedDataset.arcs || [];
     return (
-      <Card 
+      <Card
         title={
           <Space>
-            <Button icon={<ArrowLeftOutlined />} onClick={handleBackToThemes}>
-              Retour aux thèmes
+            <Button icon={<ArrowLeftOutlined />} onClick={handleBackToDatasets}>
+              Retour aux datasets
             </Button>
-            <Text strong>{selectedTheme.name}</Text>
-            <Tag color="purple">{selectedTheme.arcs.length} arcs</Tag>
+            <Text strong>{selectedDataset.name}</Text>
+            <Tag color="purple">{arcs.length} arcs</Tag>
           </Space>
         }
         extra={
@@ -443,11 +592,11 @@ export default function DatasetBuilder({ onClose }: DatasetBuilderProps) {
           </Button>
         }
       >
-        {selectedTheme.arcs.length === 0 ? (
+        {arcs.length === 0 ? (
           <div className="text-center py-8 text-gray-400">Aucun arc. Commencez par en ajouter un !</div>
         ) : (
           <Flex vertical gap="small">
-            {selectedTheme.arcs.map((arc, index) => (
+            {arcs.map((arc, index) => (
               <Card key={index} size="small">
                 <Flex justify="space-between" align="center">
                   <div>
@@ -479,7 +628,7 @@ export default function DatasetBuilder({ onClose }: DatasetBuilderProps) {
               label="Nom de l'arc"
               rules={[{ required: true, message: 'Le nom de l\'arc est requis' }]}
             >
-              <Input placeholder="Ex: Saiyan Saga, East Blue, etc." />
+              <Input placeholder="Ex: Arc 1, Arc 2, etc." />
             </Form.Item>
           </Form>
         </Modal>
@@ -493,8 +642,8 @@ export default function DatasetBuilder({ onClose }: DatasetBuilderProps) {
       title={
         <Space>
           <FolderOpenOutlined />
-          <span>Mes Thèmes</span>
-          <Tag>{themes.length}</Tag>
+          <span>Mes Datasets</span>
+          <Tag>{datasets.length}</Tag>
         </Space>
       }
       extra={
@@ -502,7 +651,7 @@ export default function DatasetBuilder({ onClose }: DatasetBuilderProps) {
           <Button icon={<UploadOutlined />} onClick={handleImportJSON}>
             Importer JSON
           </Button>
-          <Button danger onClick={handleClearAll} disabled={themes.length === 0}>
+          <Button danger onClick={handleClearAll} disabled={datasets.length === 0}>
             Effacer tout
           </Button>
           <Button onClick={onClose}>Fermer</Button>
@@ -519,34 +668,35 @@ export default function DatasetBuilder({ onClose }: DatasetBuilderProps) {
         />
         
         <div className="flex justify-between items-center">
-          <Title level={4} className="!mb-0">Liste des thèmes</Title>
-          <Button type="primary" icon={<PlusOutlined />} onClick={handleAddTheme}>
-            Créer un thème
+          <Title level={4} className="!mb-0">Liste des datasets</Title>
+          <Button type="primary" icon={<PlusOutlined />} onClick={handleAddDataset}>
+            Créer un dataset
           </Button>
         </div>
 
-        {themes.length === 0 ? (
-          <div className="text-center py-8 text-gray-400">Aucun thème. Créez-en un pour commencer !</div>
+        {datasets.length === 0 ? (
+          <div className="text-center py-8 text-gray-400">Aucun dataset. Créez-en un pour commencer !</div>
         ) : (
           <Flex vertical gap="small">
-            {themes.map((theme, index) => (
+            {datasets.map((dataset, index) => (
               <Card key={index} size="small">
                 <Flex justify="space-between" align="center">
                   <div>
-                    <Text strong className="block">{theme.name}</Text>
+                    <Text strong className="block">{dataset.name}</Text>
                     <Text type="secondary">
-                      {theme.arcs.length} arc(s) • {theme.arcs.reduce((sum, arc) => sum + arc.characters.length, 0)} personnage(s)
+                      {getDatasetCharacters(dataset).length} personnage(s)
+                      {dataset.arcs && dataset.arcs.length > 0 ? ` • ${dataset.arcs.length} arc(s)` : ''}
                     </Text>
                   </div>
                   <Space>
-                    <Button icon={<DownloadOutlined />} onClick={() => handleDownloadTheme(index)}>
+                    <Button icon={<DownloadOutlined />} onClick={() => handleDownloadDataset(index)}>
                       Télécharger
                     </Button>
-                    <Button type="primary" icon={<FolderOpenOutlined />} onClick={() => handleOpenTheme(theme, index)}>
+                    <Button type="primary" icon={<FolderOpenOutlined />} onClick={() => handleOpenDataset(dataset, index)}>
                       Ouvrir
                     </Button>
-                    <Button icon={<EditOutlined />} onClick={() => handleEditTheme(index)} />
-                    <Button danger icon={<DeleteOutlined />} onClick={() => handleDeleteTheme(index)} />
+                    <Button icon={<EditOutlined />} onClick={() => handleEditDataset(index)} />
+                    <Button danger icon={<DeleteOutlined />} onClick={() => handleDeleteDataset(index)} />
                   </Space>
                 </Flex>
               </Card>
@@ -555,16 +705,16 @@ export default function DatasetBuilder({ onClose }: DatasetBuilderProps) {
         )}
 
         <Modal
-          title={editingThemeIndex !== null ? 'Modifier le thème' : 'Créer un thème'}
-          open={isThemeModalOpen}
-          onCancel={() => setIsThemeModalOpen(false)}
-          onOk={() => themeForm.submit()}
+          title={editingDatasetIndex !== null ? 'Modifier le dataset' : 'Créer un dataset'}
+          open={isDatasetModalOpen}
+          onCancel={() => setIsDatasetModalOpen(false)}
+          onOk={() => datasetForm.submit()}
         >
-          <Form form={themeForm} layout="vertical" onFinish={handleSaveTheme}>
+          <Form form={datasetForm} layout="vertical" onFinish={handleSaveDataset}>
             <Form.Item
-              name="themeName"
-              label="Nom du thème"
-              rules={[{ required: true, message: 'Le nom du thème est requis' }]}
+              name="datasetName"
+              label="Nom du dataset"
+              rules={[{ required: true, message: 'Le nom du dataset est requis' }]}
             >
               <Input placeholder="Ex: Dragon Ball, One Piece, Naruto..." />
             </Form.Item>
