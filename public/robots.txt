@@ -1,0 +1,19 @@
+# robots.txt for mercato-game
+
+# Qu'est ce que tu cherche ici frére ? Hmmm
+
+# Allow all crawlers by default
+User-agent: *
+Allow: /
+
+# Disallow API routes
+Disallow: /api/
+
+# Disallow dynamic room routes (game sessions)
+Disallow: /room/
+
+# Common crawl optimizations
+# Crawl-delay: 1
+
+# Sitemap location
+Sitemap: https://mercatogame.fr/sitemap.xml
