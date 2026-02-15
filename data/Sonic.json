@@ -1,0 +1,1382 @@
+{
+  "name": "Sonic",
+  "arcs": [
+    {
+      "name": "Era Classic",
+      "characters": [
+        {
+          "name": "Sonic the Hedgehog",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/4/4c/SXSG_Classic_Sonic.png"
+        },
+        {
+          "name": "Miles \"Tails\" Prower",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/f/f1/TailsSuperstars.png"
+        },
+        {
+          "name": "Knuckles the Echidna",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/f/fc/KnucklesSuperstars.png"
+        },
+        {
+          "name": "Amy Rose",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/2/22/AmySuperstars.png"
+        },
+        {
+          "name": "Doctor Ivo \"Eggman\" Robotnik",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/9/9d/SXSG_Classic_Eggman.png"
+        },
+        {
+          "name": "Metal Sonic",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/0/08/Sonic_Generations_Metal.png"
+        },
+        {
+          "name": "Espio the Chameleon",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/9/92/Espio_Sonic_Fighters.png"
+        },
+        {
+          "name": "Vector the Crocodile",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/1/1e/Vector_3.png"
+        },
+        {
+          "name": "Charmy Bee",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/3/30/Charmy_1.png"
+        },
+        {
+          "name": "Mighty the Armadillo",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/f/f2/SonicBlitzMightyRender.png"
+        },
+        {
+          "name": "Ray the Flying Squirrel",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/f/f6/SonicBlitzRayRender.png"
+        },
+        {
+          "name": "Bark the Polar Bear",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/5/55/SonicBlitzBarkRender.png"
+        },
+        {
+          "name": "Bean the Dynamite",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/8/81/SonicBlitzBeanRender.png"
+        },
+        {
+          "name": "Fang the Hunter",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/c/c3/Fang.png"
+        },
+        {
+          "name": "Honey the Cat",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/0/02/Honey_the_Cat.png"
+        }
+      ]
+    },
+    {
+      "name": "Era Modern",
+      "characters": []
+    },
+    {
+      "name": "BOOM",
+      "characters": [
+        {
+          "name": "Sonic",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/0/01/Sonic_Boom_Sonic_2.png"
+        },
+        {
+          "name": "Tails",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/5/58/Sonic_Boom_Tails_2.png"
+        },
+        {
+          "name": "Knuckles",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/a/ac/The_Sonic_Boom_Knuckles_2.png"
+        },
+        {
+          "name": "Amy Rose",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/1/12/Sonic_Boom_Amy_2.png"
+        },
+        {
+          "name": "Sticks",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/d/da/Sticks_artwork.png"
+        },
+        {
+          "name": "Eggman",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/9/9e/Sonic_Boom_Eggman.png"
+        },
+        {
+          "name": "Orbot",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/5/54/Orbot_Boom.png"
+        },
+        {
+          "name": "Cubot",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/6/6a/Cubot_Boom.png"
+        },
+        {
+          "name": "Admiral Beaverton",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/f/f9/Admiral_Beaverton_Profile.png"
+        },
+        {
+          "name": "Beaver Policeman",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/6/62/BeaverPoliceman.png"
+        },
+        {
+          "name": "Bike Chain Bandit",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/d/d7/BikeChainBandit.png"
+        },
+        {
+          "name": "Belinda",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/e/ea/Charlie%27s_Wife.png"
+        },
+        {
+          "name": "Charlie",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/6/68/Charlie_Sonic_Boom.png"
+        },
+        {
+          "name": "Comedy Chimp",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/6/67/Comedy_Chimp_Profile.png"
+        },
+        {
+          "name": "Wolverton D. Sidekick",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/d/db/Wolf_Sidekick.png"
+        },
+        {
+          "name": "Rabbit Girl",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/1/10/RabbitGirlProfileV2.png"
+        },
+        {
+          "name": "Gogoba Chief",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/b/ba/Gogoba_Chief.png"
+        },
+        {
+          "name": "Justin Beaver",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/8/8b/Justin_Beaver.png"
+        },
+        {
+          "name": "Lady Walrus",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/7/7b/Lady_Walrus_Profile.png"
+        },
+        {
+          "name": "Leroy the Turtle",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/8/8c/Leroy_the_Turtle.png"
+        },
+        {
+          "name": "Chameleon",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/6/6e/Wolfie_tree_disguise.png"
+        },
+        {
+          "name": "Dave the Intern",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/7/7c/Dave_profile_v2.png"
+        },
+        {
+          "name": "Weasel Bandits",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/6/64/Weasel_Bandits.png"
+        },
+        {
+          "name": "Willy Walrus",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/1/10/Willy_Walrus_Profile.png"
+        },
+        {
+          "name": "Lord Eggman the First",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/b/b3/Lord_Eggman.png"
+        },
+        {
+          "name": "Mark the Tapir",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/f/fe/Mark_the_tapir_profile.png"
+        },
+        {
+          "name": "Mayor E. Pluribus Fink, Esquire",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/f/f7/Mayor_Fink_Profile_v2.png"
+        },
+        {
+          "name": "Mike the Ox",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/e/e9/Mike_the_Ox_Profile.png"
+        },
+        {
+          "name": "Bee Bot",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/e/e2/Buzz_Bomber_Sonic_Boom_Profile.png"
+        },
+        {
+          "name": "Beetle Bot",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/d/dd/BeetleBotProfile.png"
+        },
+        {
+          "name": "Crab Bot",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/2/2b/CdH6UoMW0AAQzir.png"
+        },
+        {
+          "name": "Mantis Bot",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/0/0a/Mantis_bot_profile.png"
+        },
+        {
+          "name": "Motobug",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/2/2a/Moto_Bug_Sonic_Boom_Profile_v3.png"
+        },
+        {
+          "name": "Scorpion Bot",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/2/26/ScorpionBotProfileV2.png"
+        },
+        {
+          "name": "Shark Bot",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/1/10/SharkBotsProfile.png"
+        },
+        {
+          "name": "Burnbot",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/e/e0/SB_S1E01_Burn_Bot.png"
+        },
+        {
+          "name": "Bolts",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/6/64/SB_RFTS_Promo_2.png"
+        },
+        {
+          "name": "Mighton",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/9/97/MightonProfile.png"
+        },
+        {
+          "name": "Cubot prototypes",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/0/0b/Cubot_prototypes_profile.png"
+        },
+        {
+          "name": "D-Fekt",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/d/da/D-Fekt_%28Sonic_Boom_%28Fire_%26_Ice%29%29.png"
+        },
+        {
+          "name": "FriendBot",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/0/0a/The_Smiths_The_World_Won%27t_Listen_Track_6_-_There_Is_a_Light_That_Never_Goes_Out~2.png"
+        },
+        {
+          "name": "Hypnobot",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/a/ac/Hypno-bot.png"
+        },
+        {
+          "name": "Morpho",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/d/dc/Steve_Eggman_profile.png"
+        },
+        {
+          "name": "Nominatus",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/e/e6/SB_S1E23_Nominatus_Profile.png"
+        },
+        {
+          "name": "Retro",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/e/e4/RetroProfile.png"
+        },
+        {
+          "name": "Beta",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/c/c5/BetaProfile.png"
+        },
+        {
+          "name": "Lyric the Last Ancient",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/7/79/Sonic_Boom_Lyric.png"
+        },
+        {
+          "name": "Irwin Fertelmeister",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/5/51/Tommy_Thunder_profile.png"
+        },
+        {
+          "name": "Zooey",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/0/0a/Zooey.png"
+        },
+        {
+          "name": "Soar the Eagle",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/5/59/Soar_the_Eagle_Profile.png"
+        },
+        {
+          "name": "Vector the Crocodile",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/4/44/SonicDash2Vector3.png"
+        },
+        {
+          "name": "Cyborg Sonic",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/6/6e/Cyborg_Sonic.png"
+        },
+        {
+          "name": "Cyborg Tails",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/4/42/CyborgTailsProfile.png"
+        },
+        {
+          "name": "Cyborg Knuckles",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/6/65/CyborgKnucklesProfile.png"
+        },
+        {
+          "name": "Cyborg Amy",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/a/a6/Fullsizeoutput_74.jpeg"
+        },
+        {
+          "name": "Cyborg Sticks",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/a/ad/CyborgSticksProfile.png"
+        },
+        {
+          "name": "Shadow the Hedgehog",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/8/8c/Transparent.png"
+        },
+        {
+          "name": "Metal Sonic",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/a/a7/Channel_3D_Metal_Sonic.png"
+        },
+        {
+          "name": "Dreamcaster",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/8/88/DREAMCASTER.png"
+        }
+      ]
+    },
+    {
+      "name": "IDW",
+      "characters": [
+        {
+          "name": "Amy Rose",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/1/1b/Amy_Rose_IDW.PNG"
+        },
+        {
+          "name": "Apogee",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/7/77/Apogee.jpeg"
+        },
+        {
+          "name": "Ashe",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/4/4a/AsheProfile.png"
+        },
+        {
+          "name": "Ashe's father",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/f/f1/Ashe%27s_father_IDW_StH_profile.jpg"
+        },
+        {
+          "name": "Barry the Quokka",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/f/f2/Barry.png"
+        },
+        {
+          "name": "Bean the Dynamite",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/c/cd/IDWBean.jpg"
+        },
+        {
+          "name": "Belle the Tinkerer",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/e/e9/Sonic_IDW_Belle.png"
+        },
+        {
+          "name": "Big the Cat",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/7/78/BigIDWv2.jpg"
+        },
+        {
+          "name": "Blaze the Cat",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/6/6f/Blaze_the_Cat_IDW_profile.jpg"
+        },
+        {
+          "name": "Brady",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/f/f2/Brady.jpeg"
+        },
+        {
+          "name": "Charmy Bee",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/4/49/Charmy.PNG"
+        },
+        {
+          "name": "Cheese",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/2/2b/IDWCheese.png"
+        },
+        {
+          "name": "Chief Mechanic",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/1/10/Chief_Mechanic_profile.jpg"
+        },
+        {
+          "name": "Clutch the Opossum",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/b/b7/Clutch_the_Opossum_profile.png"
+        },
+        {
+          "name": "Conductor's wife",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/a/ac/Conductor%27s_wife_winter_outfit..png"
+        },
+        {
+          "name": "Cream the Rabbit",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/3/38/Cream_%28IDW%29.webp"
+        },
+        {
+          "name": "Cubot",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/e/e9/CubotIDW.JPG"
+        },
+        {
+          "name": "Doctor Starline",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/6/64/Doctor_Starline_profile.png"
+        },
+        {
+          "name": "Don the Rooster",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/6/6f/DonTheRooster.png"
+        },
+        {
+          "name": "E-117 Sigma",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/0/0a/E117-Sigma.png"
+        },
+        {
+          "name": "E-123 Omega",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/5/52/E-123_Omega_%28IDW%29.png"
+        },
+        {
+          "name": "Doctor Eggman",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/1/16/IDWDr.Eggman.png"
+        },
+        {
+          "name": "Elder Scruffy",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/4/42/Elder_Scruffy.webp"
+        },
+        {
+          "name": "Espio the Chameleon",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/b/b2/EspioIDW.PNG"
+        },
+        {
+          "name": "Fang the Hunter",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/c/c3/Fang.png"
+        },
+        {
+          "name": "Froggy",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/c/ca/FroggyIDW.jpg"
+        },
+        {
+          "name": "Gardon",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/4/4d/Gardonidw.jpg"
+        },
+        {
+          "name": "Gemerl",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/f/f9/IDWGemerl.png"
+        },
+        {
+          "name": "Jet the Hawk",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/6/6c/JetIDW.png"
+        },
+        {
+          "name": "Jewel the Beetle",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/0/0d/SonicIDW_Jewel.png"
+        },
+        {
+          "name": "Kitsunami the Fennec",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/0/0d/SonicIDW_Jewel.png"
+        },
+        {
+          "name": "Knuckles the Echidna",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/4/40/KnucklesIDW.png"
+        },
+        {
+          "name": "Lanolin the Sheep",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/d/d4/Lanolin_the_Sheep_without_Maggie.png"
+        },
+        {
+          "name": "Marine the Raccoon",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/d/d1/IDW_Marine.jpg"
+        },
+        {
+          "name": "Master Zik",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/5/53/Master_Zik_%28IDW%29.jpeg"
+        },
+        {
+          "name": "Megani the Jackal",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/6/6d/Masked_Megani.png"
+        },
+        {
+          "name": "Metal Sonic",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/d/d1/Metal_Sonic_IDW_profile.png"
+        },
+        {
+          "name": "Mighty the Armadillo",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/1/1c/IDWMighty.jpg"
+        },
+        {
+          "name": "Miles \"Tails\" Prower",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/f/fa/Modern_Tails_%28IDW%29.png/"
+        },
+        {
+          "name": "Mimic the Octopus",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/2/22/Mimic_profile.png"
+        },
+        {
+          "name": "Nite the Owl",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/5/52/NiteTheOwl.png"
+        },
+        {
+          "name": "Omochao",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/9/9e/Omochao_IDW.png"
+        },
+        {
+          "name": "Orbot",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/c/c2/OrbotIDW.JPG"
+        },
+        {
+          "name": "Perigee",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/1/15/Perigee.jpg"
+        },
+        {
+          "name": "Professor Valdus the Vulture",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/8/84/Professor_Valdus.png"
+        },
+        {
+          "name": "Ray the Flying Squirrel",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/a/a8/IDWRay.jpg"
+        },
+        {
+          "name": "Rouge the Bat",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/3/3a/Rouge_the_Bat_IDW_profile.jpeg"
+        },
+        {
+          "name": "Rough the Skunk",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/7/7a/ItsRough.png"
+        },
+        {
+          "name": "Sage",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/b/b9/IDWSonic84Sage.png"
+        },
+        {
+          "name": "Salamander",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/b/b2/IDWSalamander.jpeg"
+        },
+        {
+          "name": "Shadow Android",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/2/26/ShadowandroidsIDW.PNG"
+        },
+        {
+          "name": "Shadow the Hedgehog",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/c/c2/IDWShadowTheHedgehog.png"
+        },
+        {
+          "name": "Silver the Hedgehog",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/e/e8/SilverIDW.jpeg"
+        },
+        {
+          "name": "Smithy the Lion",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/7/73/Smithy_the_Lion_profile.png"
+        },
+        {
+          "name": "Soleil the Sugar Glider",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/9/98/Soleil.png"
+        },
+        {
+          "name": "Sonic the Hedgehog",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/b/b3/Sonic_%28IDW%29.webp"
+        },
+        {
+          "name": "Storm the Albatross",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/b/be/StormIDW.png"
+        },
+        {
+          "name": "Surge the Tenrec",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/0/08/Surgepoweredup.JPG"
+        },
+        {
+          "name": "Tangle the Lemur",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/a/aa/Tangle_the_Lemur.PNG"
+        },
+        {
+          "name": "Time Eater",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/2/23/IDWTimeEater.png"
+        },
+        {
+          "name": "Trip the Sungazer",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/0/08/Knuckles_and_Trip_reunite.jpg"
+        },
+        {
+          "name": "Trip's grandfather",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/e/e1/Trip%27s_grandad.png"
+        },
+        {
+          "name": "Tumble the Skunk",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/6/62/ItsTumble.png"
+        },
+        {
+          "name": "Vanilla the Rabbit",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/f/f6/Vanillahandlessituation.png"
+        },
+        {
+          "name": "Vector the Crocodile",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/9/9d/IDWVectorIssue48.png"
+        },
+        {
+          "name": "Whisper the Wolf",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/4/44/Whisper.png"
+        },
+        {
+          "name": "Wave the Swallow",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/1/18/WaveIDW.png"
+        },
+        {
+          "name": "Zavok",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/2/27/Zavok_%28IDW%29.webp"
+        },
+        {
+          "name": "Zazz",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/7/73/ZazzIDW.jpg"
+        },
+        {
+          "name": "Zeena",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/3/34/TheIDWZeena.jpg"
+        },
+        {
+          "name": "Zomom",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/8/88/ZomomIDW.jpg"
+        },
+        {
+          "name": "Zor",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/6/6e/TheIDWZor.jpg"
+        }
+      ]
+    },
+    {
+      "name": "Archie Comics",
+      "characters": []
+    },
+    {
+      "name": "bad games",
+      "characters": []
+    },
+    {
+      "name": "games",
+      "characters": [
+        {
+          "name": "Sonic the Hedgehog",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/e/e9/Sonic1_box_usa.jpg"
+        },
+        {
+          "name": "Sonic the Hedgehog (8-bit)",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/9/96/Sonic-8-Bit-Game-Gear-US-Box-Art.png"
+        },
+        {
+          "name": "Sonic Eraser",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/6/6b/Title_Screen_Sonic_Eraser.png"
+        },
+        {
+          "name": "Waku Waku Sonic Patrol Car",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/c/c1/Waku_Waku_Sonic_Patrol_Car_title.png"
+        },
+        {
+          "name": "Sonic the Hedgehog 2 (SMS)",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/8/8e/Sonic_2_GG_US.jpg"
+        },
+        {
+          "name": "Sonic the Hedgehog 2 (16-bit)",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/f/f9/Sonic2-cover.jpg"
+        },
+        {
+          "name": "SegaSonic Cosmo Fighter",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/1/18/SegaSonic_Cosmo_Fighter-titleEnglish.png"
+        },
+        {
+          "name": "SegaSonic Popcorn Shop",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/c/c7/Title-Screen-SegaSonic-Popcorn-Shop.png"
+        },
+        {
+          "name": "SegaSonic the Hedgehog",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/8/81/SegaSonic_title.png"
+        },
+        {
+          "name": "Sonic the Hedgehog CD",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/b/bf/Soniccd-cover.jpg"
+        },
+        {
+          "name": "Sonic Chaos",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/2/27/Sonic_Chaos_boxart_NA.jpg"
+        },
+        {
+          "name": "Dr. Robotnik's Mean Bean Machine",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/1/12/Dr-Robotniks-Mean-Bean-Machine-Genesis-US-Box-Art.png"
+        },
+        {
+          "name": "Sonic Spinball",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/8/8e/Sonic-spinball-usa.png"
+        },
+        {
+          "name": "Dr. Robotnik's Mean Bean Machine (8-bit)",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/1/12/Dr-Robotniks-Mean-Bean-Machine-Game-Gear-US-Box-Art.png"
+        },
+        {
+          "name": "Sonic the Hedgehog 3",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/7/71/Sonic3cover.png"
+        },
+        {
+          "name": "Sonic Drift",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/e/e5/Sonic_Drift_%28Game_Gear%29.jpg"
+        },
+        {
+          "name": "Sonic Spinball (8-bit)",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/2/2e/Sonic_Spinball_Game_Gear_Cover.jpg"
+        },
+        {
+          "name": "Sonic & Knuckles",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/6/62/Sonic_%26_Knuckles_%28US%29.jpg"
+        },
+        {
+          "name": "Wacky Worlds Creativity Studio",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/c/ca/Wacky_Worlds_Creativity_Studio.jpg"
+        },
+        {
+          "name": "Sonic the Hedgehog Triple Trouble",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/e/e0/Sonic_Triple_Trouble_GG_US.jpg"
+        },
+        {
+          "name": "Sonic Drift 2",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/4/46/Sonic_Drift_2_GG_US.jpg"
+        },
+        {
+          "name": "Knuckles' Chaotix",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/0/07/Knuckles_Chaotix.png"
+        },
+        {
+          "name": "Tails' Skypatrol",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/3/32/TailsSkypatrolBox.jpg"
+        },
+        {
+          "name": "Tails Adventure",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/3/33/Tails_Adventure_GG_US.jpg"
+        },
+        {
+          "name": "Sonic Labyrinth",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/a/a4/SonicLabyrinthBoxArt.jpg"
+        },
+        {
+          "name": "Sonic the Fighters",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/a/a6/Sonic_ch_a04.png"
+        },
+        {
+          "name": "Sonic's Schoolhouse",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/2/2c/SonicSchoolhouseBox.png"
+        },
+        {
+          "name": "Sonic 3D Blast",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/e/ea/Sonic_3D_Blast_%28U%29_Front.jpg"
+        },
+        {
+          "name": "Sonic Blast",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/d/d1/Sonic-Blast-Box-Art-US.png"
+        },
+        {
+          "name": "Sonic Jam",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/5/5f/Sonic_Jam_USA_Cover.jpg"
+        },
+        {
+          "name": "Sonic R",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/1/1b/Sonic-R-Saturn-Box-Art.png"
+        },
+        {
+          "name": "Sonic Adventure",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/0/01/Sonic_Adventure_Box_Artwork.jpg"
+        },
+        {
+          "name": "Sonic Shuffle",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/6/64/Sonic-shuffle.378497.jpg"
+        },
+        {
+          "name": "Sonic Adventure 2",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/6/6b/Sonic_Adventure_2_box_artwork.png"
+        },
+        {
+          "name": "Sonic Advance",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/d/df/SA_GBA_US.jpg"
+        },
+        {
+          "name": "Sonic Mega Collection",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/5/57/Sonic_Mega_Collection_cover_artwork.jpg"
+        },
+        {
+          "name": "Sonic Advance 2",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/d/de/Sonic_Advance_2_box_US.jpg"
+        },
+        {
+          "name": "Sonic Pinball Party",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/2/2e/SPP_GBA_US.jpg"
+        },
+        {
+          "name": "Sonic Battle",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/8/86/Sonic_Battle_box_US.jpg"
+        },
+        {
+          "name": "Sonic Heroes",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/c/c2/Sonic_Heroes.jpg"
+        },
+        {
+          "name": "Sonic Advance 3",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/8/8a/Sonic_Advance_3_box_US.jpg"
+        },
+        {
+          "name": "Sonic Mega Collection Plus",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/f/fe/SonicMegaCollectionPlus.png"
+        },
+        {
+          "name": "Sonic Rush",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/2/20/Sonic-Rush-Box-Art-US.png"
+        },
+        {
+          "name": "Shadow the Hedgehog",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/6/67/Shadow_the_g_Coverart.png"
+        },
+        {
+          "name": "Sonic Riders",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/9/91/Sonic_Riders_key_art_EN.png"
+        },
+        {
+          "name": "Sonic the Hedgehog (2006) (LE GOAT)",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/e/e5/Sonic_Next_Gen.jpg"
+        },
+        {
+          "name": "Sonic Rivals",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/0/09/SonicRivals_US.jpg"
+        },
+        {
+          "name": "Sonic and the Secret Rings",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/b/ba/SatSR.PNG"
+        },
+        {
+          "name": "Sonic Rush Adventure",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/2/22/Sonic_Rush_Adventure.jpg"
+        },
+        {
+          "name": "Mario & Sonic at the Olympic Games",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/0/01/Mario_and_Sonic_at_the_Olympic_Games_-_Wii_North_American_boxart.png"
+        },
+        {
+          "name": "Sonic Rivals 2",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/a/a9/Sonic_Rivals_2.png"
+        },
+        {
+          "name": "Sonic Riders: Zero Gravity",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/3/33/SRZG_KeyArt.jpg"
+        },
+        {
+          "name": "Sonic Chronicles: The Dark Brotherhood",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/9/99/The_Dark_Brotherhood.jpg"
+        },
+        {
+          "name": "Sonic Unleashed",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/2/28/Box_141916-hd.jpg"
+        },
+        {
+          "name": "Sonic and the Black Knight",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/d/d5/Sonic_and_the_Black_Knight_%28Wii%29.jpg"
+        },
+        {
+          "name": "Mario & Sonic at the Olympic Winter Games",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/0/0b/Mario_and_Sonic_at_the_Olympic_games_official_cover.jpg"
+        },
+        {
+          "name": "Sonic & Sega All-Stars Racing",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/9/98/Full-sonic-%26-sega-all--stars-racing-cover.jpg"
+        },
+        {
+          "name": "Sonic the Hedgehog 4: Episode I",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/0/08/Sonic4EP1PS3BixArt.jpeg"
+        },
+        {
+          "name": "Sonic Free Riders",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/b/b9/SFRCoverArt.JPG"
+        },
+        {
+          "name": "Sonic Colors",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/e/ea/Sonic_Colors_Wii_key_art.png"
+        },
+        {
+          "name": "Sonic Generations",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/3/34/SG_630992_210762_front.jpg"
+        },
+        {
+          "name": "Mario & Sonic at the London 2012 Olympic Games",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/c/c3/Mario-sonic-london-2012-olympic-games-box-art_0.jpg"
+        },
+        {
+          "name": "Sonic the Hedgehog 4: Episode II",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/c/c0/Sonic_4_Episode_II_boxart.png"
+        },
+        {
+          "name": "Sonic the Hedgehog 4: Episode Metal",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/6/68/Episode_Metal.png"
+        },
+        {
+          "name": "Sonic & All-Stars Racing Transformed",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/c/c6/Asr2boxart.jpg"
+        },
+        {
+          "name": "Sonic Dash",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/6/67/OriginalIcon.png"
+        },
+        {
+          "name": "Sonic Lost World",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/b/b8/Sonic_Lost_World_WiiU.jpg"
+        },
+        {
+          "name": "Mario & Sonic at the Sochi 2014 Olympic Winter Games",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/7/76/M%26S2014_Wii_U_Boxart.jpg"
+        },
+        {
+          "name": "Sonic Boom: Shattered Crystal",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/1/1f/SB_Shattered_Crystal_NA_Box_Art.jpg"
+        },
+        {
+          "name": "Sonic Boom: Rise of Lyric",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/e/e5/SB_Rise_of_Lyric_NA_Box_Art.jpg"
+        },
+        {
+          "name": "Sonic Runners",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/0/0d/Sonic_Runners_App_Icon_2.0.png"
+        },
+        {
+          "name": "Mario & Sonic at the Rio 2016 Olympic Games",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/f/fc/Oie_transparent-16.png"
+        },
+        {
+          "name": "Sonic Boom: Fire & Ice",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/9/9e/Sonic_Boom_Fire_Ice.png"
+        },
+        {
+          "name": "Sonic Runners Adventure",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/5/59/SRA1024x1024.jpg"
+        },
+        {
+          "name": "Sonic Mania",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/3/3a/ManiaCoverArt.jpg"
+        },
+        {
+          "name": "Sonic Forces: Speed Battle",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/d/d5/SFSB_app_icon.jpeg"
+        },
+        {
+          "name": "Sonic Forces",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/b/b2/Sonic_Forces_box_artwork.jpg"
+        },
+        {
+          "name": "Sega Ages: Sonic the Hedgehog",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/c/cd/SegaAgesSonic1_Switch_UK_Icon.jpg"
+        },
+        {
+          "name": "Team Sonic Racing",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/7/7f/TeamSonicRacingProfile.jpg"
+        },
+        {
+          "name": "Mario & Sonic at the Olympic Games Tokyo 2020",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/f/fd/Mario%26Sonic2020CA.jpg"
+        },
+        {
+          "name": "Sonic at the Olympic Games (2020)",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/f/f4/Sonicolympicmobile2020_icon.png"
+        },
+        {
+          "name": "Sega Streaming Theater Sonic Edition",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/a/a2/Sega-Streaming-Theater-Sonic-Edition-Title-Screen.png"
+        },
+        {
+          "name": "Sonic Colors: Ultimate",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/d/d2/Sonic_colors_ultimate_key_vertical.jpeg"
+        },
+        {
+          "name": "Sonic Speed Simulator",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/5/5e/SSSBeta3.webp"
+        },
+        {
+          "name": "Sonic Origins",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/4/49/Sonic-Origins-Cover.png"
+        },
+        {
+          "name": "Sonic Frontiers",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/e/e9/Sonic_Frontiers.png"
+        },
+        {
+          "name": "The Murder of Sonic the Hedgehog",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/a/a9/The_Murder_of_Sonic_the_Hedgehog.jpg"
+        },
+        {
+          "name": "Speed Sphere Challenge",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/a/a2/Speedsphererender.jpg"
+        },
+        {
+          "name": "Sonic Superstars",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/b/be/Sonic_Superstars_key_art.jpg"
+        },
+        {
+          "name": "Sonic Dream Team",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/0/05/SonicDreamTeamIcon.png"
+        },
+        {
+          "name": "Sonic X Shadow Generations",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/f/f0/SXSG_Steam_cover.jpg"
+        },
+        {
+          "name": "Sonic Rumble",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/0/09/Sonic_Rumble_icon.jpg"
+        },
+        {
+          "name": "Sonic Racing: CrossWorlds",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/5/5c/Sonicracingcrossworlds_vertical_cover.jpg"
+        }
+      ]
+    },
+    {
+      "name": "Series/MOVIE",
+      "characters": [
+        {
+          "name": "Les adventures de Sonic",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/1/12/AoSTHdiscotekArt.png"
+        },
+        {
+          "name": "Sonic Le Rebelle",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/0/09/SonicUndergroundNetflixPoster.JPG"
+        },
+        {
+          "name": "Sonic the hedgehog (SATAM)",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/e/e4/SonicsatamMainCast.jpg"
+        },
+        {
+          "name": "Sonic BOOM",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/4/46/SonicBoomNetflixPoster.JPG"
+        },
+        {
+          "name": "Sonic X",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/7/72/SonicXposter.png"
+        },
+        {
+          "name": "Sonic Prime",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/e/e2/SonicPrimeSeason2artClean.png"
+        },
+        {
+          "name": "Knuckles",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/0/0e/Knuckles_Series_New_Visual_2.jpeg"
+        },
+        {
+          "name": "Sonic the Hedgehog (Movie)",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/f/f2/NEWSONICMOVIEPOSTER.jpg"
+        },
+        {
+          "name": "Sonic the Hedgehog 2 (Movie)",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/4/46/SonicMovie2_OfficialPosterRevised.jpg"
+        },
+        {
+          "name": "Sonic the Hedgehog 3 (movie)",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/7/74/SM3ChaoIsComingPoster%28wBilling%29.jpg"
+        },
+        {
+          "name": "Sonic the Hedgehog 4 (Movie)",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/a/a0/Sonic_the_Hedgehog_4_movie_logo.jpg"
+        },
+        {
+          "name": "Sonic OVA",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/8/86/Sonic_The_Hedgehog-_The_Movie_DVD_box_art.jpg"
+        }
+      ]
+    },
+    {
+      "name": "Speed",
+      "characters": []
+    },
+    {
+      "name": "PRIME",
+      "characters": [
+        {
+          "name": "Sonic (Normal)",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/6/60/SonicRenderIntro.png"
+        },
+        {
+          "name": "Sonic (New Yoke City)",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/b/b9/SonicPrimePose.png"
+        },
+        {
+          "name": "Sonic (Boscage Maze)",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/1/14/PrimeBoscageMazeSonicCool.png"
+        },
+        {
+          "name": "Sonic (No Place)",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/0/03/NoplacesonicALT.png"
+        },
+        {
+          "name": "Sonic (The Grim)",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/2/2b/GrimSonicRender.png"
+        },
+        {
+          "name": "Sonic (Ghost Hill)",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/d/d4/SonicHillAttire.jpg"
+        },
+        {
+          "name": "Sonic (Power Prism)",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/9/9a/GOAC_310.png"
+        },
+        {
+          "name": "Tails (Normal)",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/2/29/TailsPrimePose.png"
+        },
+        {
+          "name": "Tails (mangey)",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/7/7b/MangeyRender.png"
+        },
+        {
+          "name": "Tails (Sails)",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/b/b5/SailsRender1.png"
+        },
+        {
+          "name": "Tails (Nine)",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/5/5e/SRCWNine.png"
+        },
+        {
+          "name": "Amy Rose (Normal)",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/8/88/AmyPrimeNickelodeon.png"
+        },
+        {
+          "name": "Amy rose (Rusty Rose)",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/a/af/SRCWRustyRose.png"
+        },
+        {
+          "name": "Amy Rose (Thorn Rose)",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/a/af/SFSBThornRoseRender.png"
+        },
+        {
+          "name": "Amy Rose (Black Rose)",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/4/4e/BlackRosePose2.png"
+        },
+        {
+          "name": "Knuckles the Echidna (Normal)",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/a/af/SPrimeKnuckles.png"
+        },
+        {
+          "name": "Renegade Knucks",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/7/76/RenegadeKnucksRender.png"
+        },
+        {
+          "name": "Gnarly",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/2/28/Gnarlyfulll.png"
+        },
+        {
+          "name": "Dread",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/0/0d/SRCWDread.png"
+        },
+        {
+          "name": "Rouge the Bat",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/8/89/RougePrimeRenderCustom.png"
+        },
+        {
+          "name": "Rebel",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/a/a8/RebelRenderPose.png"
+        },
+        {
+          "name": "Prim",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/8/86/PrimRender.png"
+        },
+        {
+          "name": "Batten",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/9/90/BattenRougeRender.png"
+        },
+        {
+          "name": "Doctor Ivo \"Eggman\" Robotnik",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/c/ca/EggmanPrimePoint.png"
+        },
+        {
+          "name": "Mister Doctor Eggman",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/6/6d/MisterDrEggmanPose.png"
+        },
+        {
+          "name": "Doctor Babble",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/1/1a/DrBabblePose.png"
+        },
+        {
+          "name": "Doctor Deep",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/d/d2/DrDeepPose.png"
+        },
+        {
+          "name": "Doctor Don't",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/7/7b/DrDontPose.png"
+        },
+        {
+          "name": "Dr. Done-It",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/8/84/DrDoneItPose.png"
+        },
+        {
+          "name": "Shadow the Hedgehog",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/b/b6/ShadowPrimeRender3.png"
+        },
+        {
+          "name": "Big the Cat",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/4/47/BigPrimePose.png"
+        },
+        {
+          "name": "Denizen 1998",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/1/10/DenizenPose.png"
+        },
+        {
+          "name": "Hangry",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/9/95/HangryPose.png"
+        },
+        {
+          "name": "Catfish",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/8/89/CatfishGuitar.png"
+        },
+        {
+          "name": "Birdie",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/e/ec/BirdiePrime.png"
+        },
+        {
+          "name": "Birdie (Boscage Maze)",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/2/2b/Birdie_%28Boscage_Maze%29.png"
+        },
+        {
+          "name": "Froggy",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/9/9e/SSSBigT.png/revision"
+        },
+        {
+          "name": "Froggy (New Yoke City)",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/2/26/NYCFroggy.png"
+        },
+        {
+          "name": "Froggy (Boscage Maze)",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/d/d6/HSH_222.png"
+        },
+        {
+          "name": "Froggy (No Place)",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/d/d2/No_Place_Froggy.jpg"
+        },
+        {
+          "name": "Jack",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/e/e6/Captain_Jack.png"
+        },
+        {
+          "name": "Chaos Sonic",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/d/d4/DoubleTrouble4.png"
+        },
+        {
+          "name": "Alpha Grim Sonic",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/9/96/SFSBGrimAlphaSonic.png"
+        },
+        {
+          "name": "Alpha Grim Amy",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/3/39/AlphaGrimAmyRender.png"
+        },
+        {
+          "name": "Alpha Grim Knuckles",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/9/9b/AlphaGrimKnuckles.png"
+        },
+        {
+          "name": "Alpha Grim Rouge",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/8/8d/AlphaGrimRougeRender.png"
+        },
+        {
+          "name": "Alpha Grim Birdie",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/a/a8/GrimBirdiePose.png"
+        },
+        {
+          "name": "Grim Big",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/7/78/HSH_04.png/revision"
+        },
+        {
+          "name": "Sonic Trooper",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/5/57/Sonic_Trooper.jpeg"
+        },
+        {
+          "name": "Amy Trooper",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/8/82/Amy_Trooper.webp"
+        },
+        {
+          "name": "Knuckles Trooper",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/7/7e/Knuckles_Trooper.jpeg"
+        },
+        {
+          "name": "Rouge Trooper",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/8/8a/Rouge_Trooper.webp"
+        },
+        {
+          "name": "Birdie Trooper",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/1/1b/Birdie_Trooper.jpeg"
+        },
+        {
+          "name": "Orbot",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/4/4a/Sonic-Colours-Orbot.png"
+        },
+        {
+          "name": "Cubot",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/e/e3/Cubot.png"
+        }
+      ]
+    },
+    {
+      "name": "Sonic OVA",
+      "characters": [
+        {
+          "name": "Hyper Metal Sonic (ハイパーメタルソニック Haipā Metaru Sonikku)",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/0/0f/Hypermetalsonicprofile.png"
+        },
+        {
+          "name": "Sara (セーラ)",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/0/07/Sara-OVA-Artwork.png"
+        },
+        {
+          "name": "The President (大統領 Daitouryou)",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/c/ca/PresidentOVA.PNG"
+        },
+        {
+          "name": "執事 (Shitsuji)",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/b/ba/OldManOwl.png"
+        },
+        {
+          "name": "ブラックエッグマン (Black Eggman)",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/2/27/Normal_OVA_Ep1_416.jpg"
+        },
+        {
+          "name": "ドクター・エッグマン (Doctor Robotnik)",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/b/b7/Doctor_Robotnik_Sonic_the_Hedgehog_The_Movie.png"
+        },
+        {
+          "name": "Sonic the hedgehog (ソニック・ザ・ヘッジホッグ)",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/4/49/Sonic_OVA_Sonic.png"
+        },
+        {
+          "name": "Tails (テイルス)",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/9/92/Tails_Sonic_OVA.png"
+        },
+        {
+          "name": "Knuckles the Echidna (ナックルズ・ザ・エキドゥナ)",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/d/d2/Knuckles_the_echina_and_mole_ova-0.jpg"
+        }
+      ]
+    },
+    {
+      "name": "Easter egg / Bonus",
+      "characters": [
+        {
+          "name": "Mazin",
+          "imageUrl": "https://static.wikia.nocookie.net/continued-exe/images/f/f5/Mazin.png"
+        },
+        {
+          "name": "Sonic.Exe",
+          "imageUrl": "https://static.wikia.nocookie.net/the-unofficial-outcome-memories/images/d/d2/2011x_Remodel.png"
+        },
+        {
+          "name": "Ashura (あしゅら)",
+          "imageUrl": "https://static.wikia.nocookie.net/sega/images/1/18/AshuraSprite.png"
+        },
+        {
+          "name": "Wechnia",
+          "imageUrl": "https://static.wikia.nocookie.net/archiecomicssonicfanon/images/9/9c/Wechina.png"
+        },
+        {
+          "name": "Mr.Needlmouse",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/a/a5/GD_Sonic1_Concept_Sonic_01.png"
+        },
+        {
+          "name": "Metal Sonic Kai",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/3/3f/Evilmetalsonicmi4.png"
+        }
+      ]
+    },
+    {
+      "name": "Manga",
+      "characters": [
+        {
+          "name": "Sonic the hedgehog",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/4/4f/SonicBladeofCourageProfile.jpeg"
+        },
+        {
+          "name": "Miles \"Tails\" Prower",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/8/83/TailsBOC.png"
+        },
+        {
+          "name": "Doctor Eggman",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/c/ca/EggmanBOC.png"
+        },
+        {
+          "name": "Shadow the Hedgehog",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/6/6c/ShadowCoroCoroManga.png"
+        },
+        {
+          "name": "Yuuta (ユータ )",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/5/5e/Yuuta.png"
+        },
+        {
+          "name": "Princess Metstli of the Athel Kingdom (アテル国王女メトストリ)",
+          "imageUrl": "https://static.wikia.nocookie.net/sonic/images/8/8e/Metstli.jpg"
+        }
+      ]
+    },
+    {
+      "name": "Trasnformation",
+      "characters": []
+    },
+    {
+      "name": "Vilian",
+      "characters": []
+    }
+  ]
+}
