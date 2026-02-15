@@ -58,4 +58,5 @@ Le site sera accessible sur [http://localhost:3000](http://localhost:3000).
 
 ## Remerciement
 Merci à luxlas pour son aide sur l'hébergement du projet.
+
 Merci à speedsolaris pour la réalisation du dataset Sonic.
