@@ -99,6 +99,9 @@ export const translations = {
     enterValidBet: "Veuillez entrer une mise valide",
     betTooHigh: "Mise trop élevée",
     betPlaced: "placée",
+    
+    // Footer
+    githubRepository: "Dépôt GitHub",
   },
   en: {
     // Header
@@ -200,6 +203,9 @@ export const translations = {
     enterValidBet: "Please enter a valid bet",
     betTooHigh: "Bet too high",
     betPlaced: "placed",
+    
+    // Footer
+    githubRepository: "GitHub Repository",
   }
 };
 

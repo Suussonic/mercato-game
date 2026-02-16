@@ -105,6 +105,9 @@ const resources = {
       betPlaced: "placée",
       roomNotFoundDescription: "Cette room n'existe pas ou vous n'y êtes pas connecté",
       backToHome: "Retour à l'accueil",
+      
+      // Footer
+      githubRepository: "Dépôt GitHub",
     }
   },
   en: {
@@ -212,6 +215,9 @@ const resources = {
       // Room Page
       roomNotFoundDescription: "This room does not exist or you are not connected to it",
       backToHome: "Back to home",
+      
+      // Footer
+      githubRepository: "GitHub Repository",
     }
   }
 };

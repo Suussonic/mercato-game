@@ -5,6 +5,7 @@ import { useParams, useRouter } from 'next/navigation';
 import { Layout, Space, Spin, Result, Button } from 'antd';
 import { LoadingOutlined, HomeOutlined } from '@ant-design/icons';
 import AppHeader from '@/components/AppHeader';
+import AppFooter from '@/components/AppFooter';
 import WaitingRoom from '@/components/WaitingRoom';
 import GameConfigForm from '@/components/GameConfigForm';
 import GameBoard from '@/components/GameBoard';
@@ -177,6 +178,8 @@ export default function RoomPage() {
           )}
         </div>
       </Content>
+
+      <AppFooter />
     </Layout>
   );
 }

@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { Layout, Space, Button, Modal } from 'antd';
 import { DatabaseOutlined } from '@ant-design/icons';
 import AppHeader from '@/components/AppHeader';
+import AppFooter from '@/components/AppFooter';
 import WelcomeSection from '@/components/WelcomeSection';
 import CreateRoomForm from '@/components/CreateRoomForm';
 import JoinRoomForm from '@/components/JoinRoomForm';
@@ -52,6 +53,8 @@ export default function Home() {
           </Space>
         </div>
       </Content>
+
+      <AppFooter />
 
       <Modal
         open={isDatasetBuilderOpen}
