@@ -27,7 +27,6 @@ export default function AppHeader() {
         
         <Space size="middle" className="flex items-center">
           <Space size="small" className="flex items-center">
-            <GlobalOutlined className="text-gray-600 dark:text-gray-300" />
             <Select
               value={i18n.language}
               onChange={handleLanguageChange}
