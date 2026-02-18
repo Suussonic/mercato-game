@@ -44,7 +44,7 @@ export default function WaitingRoom({ room, currentPlayer, onStartConfig }: Wait
         <Space orientation="vertical" className="w-full" size="large">
           <div className="text-center">
             <Title level={2}>{t('waitingRoom')}</Title>
-            <div className="bg-blue-50 dark:bg-blue-900 p-4 rounded-lg mb-4">
+            <div className="bg-gray-50 dark:bg-gray-50 p-4 rounded-lg mb-4">
               <Text type="secondary" className="block mb-2">{t('shareCode')}</Text>
               <Space>
                 <Text className="text-2xl font-bold tracking-wider">{room.code}</Text>
