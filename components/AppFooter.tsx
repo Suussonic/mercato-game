@@ -10,16 +10,16 @@ const { Text } = Typography;
 export default function AppFooter() {
   const { t } = useTranslation();
   return (
-    <Footer className="bg-gray-800 shadow-md py-4 px-4 md:px-6">
-      <div className="max-w-7xl mx-auto flex items-center justify-center">
+    <Footer className="ui-footer">
+      <div className="ui-footer-inner">
         <a
           href="https://github.com/Suussonic/mercato-game"
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-2 hover:text-blue-600 transition-colors duration-200"
+          className="ui-footer-link"
         >
-          <GithubOutlined className="text-2xl !text-black" />
-          <Text className="!text-gray-900 hover:!text-blue-600 transition-colors duration-200">
+          <GithubOutlined className="ui-footer-icon" />
+          <Text className="ui-footer-text">
             {t('githubRepository')}
           </Text>
         </a>

@@ -111,27 +111,27 @@ export default function VotingPhase({ room, currentPlayer }: VotingPhaseProps) {
   const voteProgress = (totalVotes / localRoom.players.length) * 100;
 
   return (
-    <div className="w-full max-w-7xl mx-auto space-y-6">
+    <div className="ui-game-wrapper">
       {/* Header */}
       <Card>
-        <div className="flex justify-between items-center flex-wrap gap-4">
-          <Title level={2} className="!mb-0">
+        <div className="ui-game-header-row">
+          <Title level={2} className="ui-title-no-margin">
             {localRoom.status === 'finished' ? (
-              <><TrophyOutlined className="mr-2" />{t('results')}</>
+              <><TrophyOutlined className="ui-icon-leading" />{t('results')}</>
             ) : (
-              <><CheckCircleOutlined className="mr-2" />{t('votingPhase')}</>
+              <><CheckCircleOutlined className="ui-icon-leading" />{t('votingPhase')}</>
             )}
           </Title>
           
           {localRoom.status === 'voting' && (
-            <Tag icon={<ClockCircleOutlined />} color="blue" className="text-lg px-4 py-2">
+            <Tag icon={<ClockCircleOutlined />} color="blue" className="ui-tag-lg">
               {timeRemaining}s
             </Tag>
           )}
         </div>
 
         {localRoom.status === 'voting' && (
-          <div className="mt-4">
+          <div className="ui-vote-progress">
             <Text>{t('votes')}: {totalVotes} / {localRoom.players.length}</Text>
             <Progress percent={voteProgress} status="active" />
           </div>
@@ -140,11 +140,11 @@ export default function VotingPhase({ room, currentPlayer }: VotingPhaseProps) {
 
       {/* Winner Announcement */}
       {localRoom.status === 'finished' && winner && (
-        <Card className="text-center bg-gradient-to-r from-yellow-50 to-yellow-100 dark:from-yellow-900 dark:to-yellow-800">
-          <Space orientation="vertical" size="large" className="w-full">
-            <TrophyOutlined className="text-6xl text-yellow-500" />
-            <Title level={2}><CrownOutlined className="mr-2" />{winner.name} {t('winner')}<CrownOutlined className="ml-2" /></Title>
-            <Text className="text-lg">
+        <Card className="ui-winner-card">
+          <Space orientation="vertical" size="large" className="ui-space-full">
+            <TrophyOutlined className="ui-trophy-large" />
+            <Title level={2}><CrownOutlined className="ui-icon-leading" />{winner.name} {t('winner')}<CrownOutlined className="ui-icon-trailing" /></Title>
+            <Text className="ui-text-lg">
               {getVoteCount(winner.id)} {t('votes')}
             </Text>
           </Space>
@@ -154,24 +154,24 @@ export default function VotingPhase({ room, currentPlayer }: VotingPhaseProps) {
       {/* Voting Interface */}
       {localRoom.status === 'voting' && !hasVoted && (
         <Card title={t('voteForWinner')}>
-          <Space orientation="vertical" className="w-full" size="large">
+          <Space orientation="vertical" className="ui-space-full" size="large">
             <Text>{t('selectPlayer')}</Text>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="ui-vote-grid">
               {localRoom.players
                 .map(player => (
                   <Card
                     key={player.id}
                     hoverable
-                    className={selectedPlayer === player.id ? 'border-2 border-blue-500' : ''}
+                    className={selectedPlayer === player.id ? 'ui-selected-card' : ''}
                     onClick={() => setSelectedPlayer(player.id)}
                   >
-                    <Space orientation="vertical" className="w-full">
-                      <Text strong className="text-lg">{player.name}</Text>
-                      <Text><DollarOutlined className="mr-1" />{t('finalBalance')}: {player.balance}</Text>
-                      <Text><TeamOutlined className="mr-1" />{t('charactersLabel')}: {player.characters.length}</Text>
+                    <Space orientation="vertical" className="ui-space-full">
+                      <Text strong className="ui-text-lg">{player.name}</Text>
+                      <Text><DollarOutlined className="ui-icon-inline" />{t('finalBalance')}: {player.balance}</Text>
+                      <Text><TeamOutlined className="ui-icon-inline" />{t('charactersLabel')}: {player.characters.length}</Text>
                       
-                      <div className="flex flex-wrap gap-2">
+                      <div className="ui-avatars-row">
                         {player.characters.map((char, idx) => (
                           <div key={idx} title={char.name}>
                             <Avatar
@@ -202,38 +202,38 @@ export default function VotingPhase({ room, currentPlayer }: VotingPhaseProps) {
 
       {hasVoted && localRoom.status === 'voting' && (
         <Card>
-          <Text className="text-lg"><CheckCircleOutlined className="mr-2 text-green-500" />{t('voted')}</Text>
+          <Text className="ui-voted-text"><CheckCircleOutlined className="ui-ok-icon" />{t('voted')}</Text>
         </Card>
       )}
 
       {/* Leaderboard */}
       <Card title={t('leaderboard')}>
-        <Space orientation="vertical" className="w-full" size="middle">
+        <Space orientation="vertical" className="ui-space-full" size="middle">
           {sortedPlayers.map((player, index) => (
             <Card key={player.id} size="small">
-              <div className="flex justify-between items-start flex-wrap gap-4">
+              <div className="ui-vote-card-head">
                 <Space orientation="vertical">
                   <Space>
-                    <Text strong className="text-xl">
+                    <Text strong className="ui-title-xl">
                       #{index + 1} {player.name}
                     </Text>
                     {player.id === room.hostId && <Tag color="gold">Chef</Tag>}
                     {localRoom.status === 'finished' && index === 0 && (
-                      <TrophyOutlined className="text-2xl text-yellow-500" />
+                      <TrophyOutlined className="ui-title-2xl-gold" />
                     )}
                   </Space>
                   
-                  <div className="flex gap-4 flex-wrap">
-                    <Text><DollarOutlined className="mr-1" />{player.balance}</Text>
-                    <Text><TeamOutlined className="mr-1" />{player.characters.length} {t('charactersCount')}</Text>
+                  <div className="ui-vote-stats">
+                    <Text><DollarOutlined className="ui-icon-inline" />{player.balance}</Text>
+                    <Text><TeamOutlined className="ui-icon-inline" />{player.characters.length} {t('charactersCount')}</Text>
                     {localRoom.status === 'finished' && (
-                      <Text><CheckCircleOutlined className="mr-1" />{getVoteCount(player.id)} {t('votes')}</Text>
+                      <Text><CheckCircleOutlined className="ui-icon-inline" />{getVoteCount(player.id)} {t('votes')}</Text>
                     )}
                   </div>
                 </Space>
 
                 {player.characters.length > 0 && (
-                  <div className="flex flex-wrap gap-2">
+                  <div className="ui-avatars-row">
                     {player.characters.map((char, idx) => (
                       <div key={idx} title={char.name}>
                         <Avatar
@@ -254,11 +254,11 @@ export default function VotingPhase({ room, currentPlayer }: VotingPhaseProps) {
       {/* Actions after game ends */}
       {localRoom.status === 'finished' && (
         <Card>
-          <Space orientation="vertical" className="w-full" size="large">
+          <Space orientation="vertical" className="ui-space-full" size="large">
             {isHost ? (
               <>
                 <Title level={4}>Actions du Chef</Title>
-                <Space wrap className="w-full">
+                <Space wrap className="ui-space-full">
                   <Button 
                     type="primary" 
                     icon={<ReloadOutlined />}

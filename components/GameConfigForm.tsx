@@ -182,16 +182,16 @@ export default function GameConfigForm({ onConfigComplete }: GameConfigFormProps
 
   if (loading) {
     return (
-      <Card title={t('gameConfig')} className="w-full max-w-4xl shadow-lg">
-        <div className="text-center py-8">Chargement des thèmes...</div>
+      <Card title={t('gameConfig')} className="ui-panel-4xl">
+        <div className="ui-config-loading">Chargement des thèmes...</div>
       </Card>
     );
   }
 
   if (themes.length === 0) {
     return (
-      <Card title={t('gameConfig')} className="w-full max-w-4xl shadow-lg">
-        <div className="text-center py-8 text-red-500">
+      <Card title={t('gameConfig')} className="ui-panel-4xl">
+        <div className="ui-config-error">
           Aucun thème disponible. Ajoutez des fichiers JSON dans le dossier data/
         </div>
       </Card>
@@ -199,7 +199,7 @@ export default function GameConfigForm({ onConfigComplete }: GameConfigFormProps
   }
 
   return (
-    <Card title={t('gameConfig')} className="w-full max-w-4xl shadow-lg">
+    <Card title={t('gameConfig')} className="ui-panel-4xl">
       <Form
         form={form}
         layout="vertical"
@@ -221,7 +221,7 @@ export default function GameConfigForm({ onConfigComplete }: GameConfigFormProps
               const isAPI = theme.name === 'Dragon Ball API';
               return (
                 <Option key={theme.name} value={theme.name}>
-                  <div className="flex items-center justify-between">
+                  <div className="ui-between-center">
                     <span>{theme.name}</span>
                     <Tag color={isAPI ? 'blue' : 'green'}>
                       {isAPI ? 'API' : 'Dataset'}
@@ -269,7 +269,7 @@ export default function GameConfigForm({ onConfigComplete }: GameConfigFormProps
                 rules={[{ required: true, message: t('selectCharacterError') }]}
               >
                 <Checkbox.Group onChange={(values) => setSelectedCharacters(values as string[])}>
-                  <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
+                  <div className="ui-grid-checks">
                     {availableCharacters.map(char => (
                       <Checkbox key={char.name} value={char.name}>
                         {char.name}
@@ -282,13 +282,13 @@ export default function GameConfigForm({ onConfigComplete }: GameConfigFormProps
           </>
         )}
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="ui-grid-config">
           <Form.Item
             name="numberOfTurns"
             label={t('numberOfTurns')}
             rules={[{ required: true }]}
           >
-            <InputNumber min={1} max={50} size="large" className="w-full" />
+            <InputNumber min={1} max={50} size="large" className="ui-input-full" />
           </Form.Item>
 
           <Form.Item
@@ -296,7 +296,7 @@ export default function GameConfigForm({ onConfigComplete }: GameConfigFormProps
             label={t('charactersPerPlayer')}
             rules={[{ required: true }]}
           >
-            <InputNumber min={1} max={20} size="large" className="w-full" />
+            <InputNumber min={1} max={20} size="large" className="ui-input-full" />
           </Form.Item>
 
           <Form.Item
@@ -304,7 +304,7 @@ export default function GameConfigForm({ onConfigComplete }: GameConfigFormProps
             label={t('turnDuration')}
             rules={[{ required: true }]}
           >
-            <InputNumber min={10} max={300} size="large" className="w-full" />
+            <InputNumber min={10} max={300} size="large" className="ui-input-full" />
           </Form.Item>
 
           <Form.Item
@@ -312,7 +312,7 @@ export default function GameConfigForm({ onConfigComplete }: GameConfigFormProps
             label={t('startingBalance')}
             rules={[{ required: true }]}
           >
-            <InputNumber min={100} max={10000} size="large" className="w-full" />
+            <InputNumber min={100} max={10000} size="large" className="ui-input-full" />
           </Form.Item>
         </div>
 

@@ -46,7 +46,7 @@ export default function CreateRoomForm({ onRoomCreated }: CreateRoomFormProps) {
   };
 
   return (
-    <Card title={t('createRoom')} className="w-full max-w-md shadow-lg">
+    <Card title={t('createRoom')} className="ui-panel-md">
       <Form form={form} layout="vertical" onFinish={handleSubmit}>
         <Form.Item
           name="playerName"

@@ -29,12 +29,12 @@ export default function Home() {
   };
 
   return (
-    <Layout className="min-h-screen bg-white dark:bg-gradient-to-br dark:from-gray-900 dark:to-gray-800">
+    <Layout className="ui-page-home">
       <AppHeader />
 
-      <Content className="p-4 md:p-6 flex items-center justify-center min-h-[calc(100vh-64px)]">
-        <div className="w-full max-w-6xl mx-auto">
-          <Space orientation="vertical" size="large" className="w-full" style={{ display: 'flex', alignItems: 'center' }}>
+      <Content className="ui-content-main">
+        <div className="ui-container-6xl">
+          <Space orientation="vertical" size="large" className="ui-stack-lg" style={{ display: 'flex', alignItems: 'center' }}>
             <WelcomeSection />
             
             <Button 
@@ -46,7 +46,7 @@ export default function Home() {
               Créer son propre Dataset
             </Button>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
+            <div className="ui-grid-forms">
               <CreateRoomForm onRoomCreated={handleRoomCreated} />
               <JoinRoomForm onRoomJoined={handleRoomJoined} />
             </div>

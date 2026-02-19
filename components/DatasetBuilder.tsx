@@ -512,14 +512,14 @@ export default function DatasetBuilder({ onClose }: DatasetBuilderProps) {
         }
       >
         {(isArcMode ? currentArc!.characters.length : selectedDataset.characters.length) === 0 ? (
-          <div className="text-center py-8 text-gray-400">Aucun personnage. Ajoutez-en un !</div>
+          <div className="ui-db-empty">Aucun personnage. Ajoutez-en un !</div>
         ) : (
           <Flex vertical gap="small">
             {(isArcMode ? currentArc!.characters : selectedDataset.characters).map((char, index) => (
               <Card key={index} size="small">
                 <Flex justify="space-between" align="center">
-                  <div className="flex-1">
-                    <Text strong className="block">{char.name}</Text>
+                  <div className="ui-flex-1">
+                    <Text strong className="ui-db-title">{char.name}</Text>
                     <Text type="secondary" ellipsis style={{ maxWidth: 400, display: 'block' }}>
                       {char.imageUrl}
                     </Text>
@@ -593,14 +593,14 @@ export default function DatasetBuilder({ onClose }: DatasetBuilderProps) {
         }
       >
         {arcs.length === 0 ? (
-          <div className="text-center py-8 text-gray-400">Aucun arc. Commencez par en ajouter un !</div>
+          <div className="ui-db-empty">Aucun arc. Commencez par en ajouter un !</div>
         ) : (
           <Flex vertical gap="small">
             {arcs.map((arc, index) => (
               <Card key={index} size="small">
                 <Flex justify="space-between" align="center">
                   <div>
-                    <Text strong className="block">{arc.name}</Text>
+                    <Text strong className="ui-db-title">{arc.name}</Text>
                     <Text type="secondary">{arc.characters.length} personnage(s)</Text>
                   </div>
                   <Space>
@@ -658,7 +658,7 @@ export default function DatasetBuilder({ onClose }: DatasetBuilderProps) {
         </Space>
       }
     >
-      <Space orientation="vertical" className="w-full" size="large">
+      <Space orientation="vertical" className="ui-space-full" size="large">
         <input
           ref={fileInputRef}
           type="file"
@@ -667,22 +667,22 @@ export default function DatasetBuilder({ onClose }: DatasetBuilderProps) {
           onChange={handleFileChange}
         />
         
-        <div className="flex justify-between items-center">
-          <Title level={4} className="!mb-0">Liste des datasets</Title>
+        <div className="ui-db-list-head">
+          <Title level={4} className="ui-db-list-title">Liste des datasets</Title>
           <Button type="primary" icon={<PlusOutlined />} onClick={handleAddDataset}>
             Créer un dataset
           </Button>
         </div>
 
         {datasets.length === 0 ? (
-          <div className="text-center py-8 text-gray-400">Aucun dataset. Créez-en un pour commencer !</div>
+          <div className="ui-db-empty">Aucun dataset. Créez-en un pour commencer !</div>
         ) : (
           <Flex vertical gap="small">
             {datasets.map((dataset, index) => (
               <Card key={index} size="small">
                 <Flex justify="space-between" align="center">
                   <div>
-                    <Text strong className="block">{dataset.name}</Text>
+                    <Text strong className="ui-db-title">{dataset.name}</Text>
                     <Text type="secondary">
                       {getDatasetCharacters(dataset).length} personnage(s)
                       {dataset.arcs && dataset.arcs.length > 0 ? ` • ${dataset.arcs.length} arc(s)` : ''}

@@ -112,7 +112,7 @@ export default function JoinRoomForm({ onRoomJoined }: JoinRoomFormProps) {
   };
 
   return (
-    <Card title={t('joinRoom')} className="w-full max-w-md shadow-lg">
+    <Card title={t('joinRoom')} className="ui-panel-md">
       <Form form={form} layout="vertical" onFinish={handleSubmit}>
         <Form.Item
           name="roomCode"

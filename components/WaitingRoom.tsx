@@ -39,30 +39,30 @@ export default function WaitingRoom({ room, currentPlayer, onStartConfig }: Wait
   };
 
   return (
-    <div className="w-full max-w-4xl mx-auto space-y-6">
+    <div className="ui-room-wrapper">
       <Card>
-        <Space orientation="vertical" className="w-full" size="large">
-          <div className="text-center">
+        <Space orientation="vertical" className="ui-space-full" size="large">
+          <div className="ui-title-center">
             <Title level={2}>{t('waitingRoom')}</Title>
-            <div className="bg-gray-50 dark:bg-gray-50 p-4 rounded-lg mb-4">
+            <div className="ui-room-code-box">
               <Text type="secondary" className="block mb-2">{t('shareCode')}</Text>
               <Space>
-                <Text className="text-2xl font-bold tracking-wider">{room.code}</Text>
+                <Text className="ui-room-code">{room.code}</Text>
                 <Button type="primary" onClick={handleCopyCode}>{t('copyCode')}</Button>
               </Space>
               {room.isPrivate && (
-                <div className="mt-2">
+                <div className="ui-mt-2">
                   <Tag color="red">{t('privateRoomTag')}</Tag>
-                  <Text type="secondary" className="text-sm block mt-1">{t('needPassword')}</Text>
+                  <Text type="secondary" className="ui-text-sm-muted">{t('needPassword')}</Text>
                 </div>
               )}
             </div>
           </div>
 
           <Card title={`${t('players')} (${localRoom.players.length})`}>
-            <div className="space-y-2">
+            <div className="ui-list-y-2">
               {localRoom.players.map((player) => (
-                <div key={player.id} className="flex items-center justify-between p-3 bg-gray-50 rounded">
+                <div key={player.id} className="ui-list-row">
                   <Space>
                     <Text strong>{player.name}</Text>
                     {player.id === room.hostId && <Tag color="gold">{t('host')}</Tag>}
@@ -84,13 +84,13 @@ export default function WaitingRoom({ room, currentPlayer, onStartConfig }: Wait
                 {t('configureGame')}
               </Button>
               {localRoom.players.length < 2 && (
-                <Text type="secondary" className="text-center block text-sm">
+                <Text type="secondary" className="ui-text-center-sm">
                   Au moins 2 joueurs sont nécessaires pour commencer
                 </Text>
               )}
             </>
           ) : (
-            <Text type="secondary" className="text-center block">
+            <Text type="secondary" className="ui-text-center-block">
               {t('waitingForHost')}
             </Text>
           )}

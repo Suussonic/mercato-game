@@ -54,7 +54,7 @@ Le site sera accessible sur [http://localhost:3000](http://localhost:3000).
 
 ## Personnalisation
 - Ajoutez vos propres personnages dans le dossier `data/` ou via l'interface DatasetBuilder.
-- Modifiez les styles via Tailwind dans `app/globals.css`.
+- Modifiez les styles via Tailwind dans `tailwind.css`.
 
 ## Remerciement
 Merci à luxlas pour son aide sur l'hébergement du projet.

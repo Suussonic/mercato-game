@@ -9,14 +9,14 @@ export default function WelcomeSection() {
   const { t } = useTranslation();
   
   return (
-    <Card className="max-w-4xl mx-auto shadow-lg">
-      <Title level={2} className="text-center !mb-6">{t('welcomeTitle')}</Title>
+    <Card className="ui-welcome-card">
+      <Title level={2} className="ui-title-center-lg">{t('welcomeTitle')}</Title>
       
-      <Paragraph className="text-lg">
+      <Paragraph className="ui-text-lg">
         <strong>{t('howToPlay')}</strong>
       </Paragraph>
       
-      <div className="space-y-4">
+      <div className="ui-stack-y-4">
         <Paragraph>
           <strong>{t('step1Title')}</strong>
           <br />

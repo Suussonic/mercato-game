@@ -137,19 +137,19 @@ export default function GameBoard({ room, currentPlayer, onGameEnd }: GameBoardP
   const maxBet = Math.max(...localRoom.players.map(p => p.currentBet));
 
   return (
-    <div className="w-full max-w-7xl mx-auto space-y-6">
+    <div className="ui-game-wrapper">
       {/* Header */}
       <Card>
-        <div className="flex justify-between items-center flex-wrap gap-4">
+        <div className="ui-game-header-row">
           <div>
-            <Title level={3} className="!mb-0">
+            <Title level={3} className="ui-title-no-margin">
               Tour {localRoom.gameState?.currentTurn} / {localRoom.config?.numberOfTurns}
             </Title>
             <Text type="secondary">Room: {room.code}</Text>
           </div>
           
-          <div className="flex items-center gap-4">
-            <Tag icon={<ClockCircleOutlined />} color="blue" className="text-lg px-4 py-2">
+          <div className="ui-inline-row-gap">
+            <Tag icon={<ClockCircleOutlined />} color="blue" className="ui-tag-lg">
               {timeRemaining}s
             </Tag>
             {isHost && (
@@ -163,16 +163,16 @@ export default function GameBoard({ room, currentPlayer, onGameEnd }: GameBoardP
 
       {/* Current Character */}
       {localRoom.gameState?.currentCharacter && (
-        <Card className="text-center">
-          <div className="flex flex-col items-center gap-4">
+        <Card className="ui-character-card">
+          <div className="ui-character-content">
             <img
               src={localRoom.gameState.currentCharacter.imageUrl}
               alt={localRoom.gameState.currentCharacter.name}
-              className="w-full max-w-md h-64 object-contain"
+              className="ui-character-image"
             />
             <Title level={2}>{localRoom.gameState.currentCharacter.name}</Title>
             {maxBet > 0 && (
-              <Tag color="gold" className="text-lg px-4 py-2">
+              <Tag color="gold" className="ui-tag-lg">
                 Mise la plus haute: {maxBet}
               </Tag>
             )}
@@ -183,13 +183,13 @@ export default function GameBoard({ room, currentPlayer, onGameEnd }: GameBoardP
       {/* Betting Interface */}
       {!hasFolded && (
         <Card title="Votre Mise">
-          <Space orientation="vertical" className="w-full" size="large">
+          <Space orientation="vertical" className="ui-space-full" size="large">
             <div>
               <Text strong>Solde disponible: </Text>
-              <Text className="text-xl">{currentPlayerData?.balance || 0}</Text>
+              <Text className="ui-title-xl">{currentPlayerData?.balance || 0}</Text>
             </div>
             
-            <div className="flex gap-4 flex-wrap">
+            <div className="ui-bet-row">
               <InputNumber
                 min={currentPlayerData?.currentBet || 0}
                 max={currentPlayerData?.balance || 0}
@@ -202,7 +202,7 @@ export default function GameBoard({ room, currentPlayer, onGameEnd }: GameBoardP
                   setBetAmount(Math.max(minValue, Math.min(newValue, maxValue)));
                 }}
                 size="large"
-                className="flex-1 min-w-[200px]"
+                className="ui-bet-input"
                 placeholder="Entrez votre mise"
               />
               <Button 
@@ -219,7 +219,7 @@ export default function GameBoard({ room, currentPlayer, onGameEnd }: GameBoardP
             </div>
 
             {currentPlayerData?.currentBet && currentPlayerData.currentBet > 0 && (
-              <Tag color="green" className="text-lg px-4 py-2">
+              <Tag color="green" className="ui-tag-lg">
                 Mise actuelle: {currentPlayerData.currentBet}
               </Tag>
             )}
@@ -229,26 +229,26 @@ export default function GameBoard({ room, currentPlayer, onGameEnd }: GameBoardP
 
       {hasFolded && (
         <Card>
-          <Text type="secondary" className="text-lg">
+          <Text type="secondary" className="ui-text-lg">
             Vous vous êtes couché pour ce tour
           </Text>
         </Card>
       )}
 
       {/* Players */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="ui-players-grid">
         {localRoom.players.map(player => (
           <Card
             key={player.id}
-            className={player.id === currentPlayer.id ? 'border-2 border-blue-500' : ''}
+            className={player.id === currentPlayer.id ? 'ui-selected-card' : ''}
           >
-            <Space orientation="vertical" className="w-full">
-              <div className="flex justify-between items-center">
-                <Text strong className="text-lg">
+            <Space orientation="vertical" className="ui-space-vertical-full">
+              <div className="ui-player-header">
+                <Text strong className="ui-player-name">
                   {player.name}
-                  {player.id === room.hostId && <Tag color="gold" className="ml-2">Chef</Tag>}
+                  {player.id === room.hostId && <Tag color="gold" className="ui-ml-2">Chef</Tag>}
                 </Text>
-                <Text><DollarOutlined className="mr-1" />{player.balance}</Text>
+                <Text><DollarOutlined className="ui-icon-inline" />{player.balance}</Text>
               </div>
 
               {player.currentBet > 0 && (
@@ -261,8 +261,8 @@ export default function GameBoard({ room, currentPlayer, onGameEnd }: GameBoardP
 
               {player.characters.length > 0 && (
                 <div>
-                  <Text type="secondary" className="block mb-2">Personnages:</Text>
-                  <div className="flex flex-wrap gap-2">
+                  <Text type="secondary" className="ui-block-mb-2">Personnages:</Text>
+                  <div className="ui-avatars-row">
                     {player.characters.map((char, idx) => (
                       <div key={`${player.id}-${idx}-${char.name}`} title={char.name}>
                         <Avatar

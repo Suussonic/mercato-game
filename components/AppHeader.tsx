@@ -14,24 +14,24 @@ export default function AppHeader() {
   };
 
   return (
-    <Header className="bg-gray-800 shadow-md sticky top-0 z-50 px-4 md:px-6">
-      <div className="max-w-7xl mx-auto flex items-center justify-between h-full">
+    <Header className="ui-header">
+      <div className="ui-header-inner">
         <Title
           level={2}
-          className="!mb-0 !text-blue-600 dark:!text-blue-400 flex items-center whitespace-nowrap text-lg sm:text-2xl md:text-3xl w-full justify-center md:justify-start"
+          className="ui-header-title"
           style={{ minWidth: 0 }}
         >
-          <TrophyOutlined className="mr-2" />
-          <span className="truncate block">{t('appName')}</span>
+          <TrophyOutlined className="ui-icon-leading" />
+          <span className="ui-truncate-block">{t('appName')}</span>
         </Title>
         
-        <Space size="middle" className="flex items-center">
-          <Space size="small" className="flex items-center">
+        <Space size="middle" className="ui-flex-center">
+          <Space size="small" className="ui-flex-center">
             <Select
               value={i18n.language}
               onChange={handleLanguageChange}
               size="middle"
-              className="w-20"
+              className="ui-select-compact"
               options={[
                 { value: 'fr', label: 'FR' },
                 { value: 'en', label: 'EN' },
@@ -44,7 +44,7 @@ export default function AppHeader() {
   );
 }
 
-/* Ajoute dans le fichier globals.css ou tailwind.config.js :
+/* Ajoute dans le fichier tailwind.css ou tailwind.config.js :
 @media (max-width: 340px) {
   .xs\:inline { display: none !important; }
 }

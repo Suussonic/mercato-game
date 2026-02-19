@@ -124,13 +124,13 @@ export default function RoomPage() {
   };
 
   return (
-    <Layout className="min-h-screen bg-gradient-to-br from-gray-900 to-gray-800">
+    <Layout className="ui-page-room">
       <AppHeader />
 
-      <Content className="p-4 md:p-6">
-        <div className="max-w-7xl mx-auto">
+      <Content className="ui-content-room">
+        <div className="ui-container-7xl">
           {phase === 'loading' && (
-            <div className="flex justify-center items-center min-h-[400px]">
+            <div className="ui-center-loader">
               <Spin indicator={<LoadingOutlined style={{ fontSize: 48 }} spin />} />
             </div>
           )}
@@ -157,7 +157,7 @@ export default function RoomPage() {
           )}
 
           {phase === 'configuring' && (
-            <div className="flex justify-center">
+            <div className="ui-center-row">
               <GameConfigForm onConfigComplete={handleConfigComplete} />
             </div>
           )}

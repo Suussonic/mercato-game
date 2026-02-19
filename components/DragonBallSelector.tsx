@@ -201,9 +201,9 @@ export default function DragonBallSelector({ onSelectionComplete }: DragonBallSe
   if (loading) {
     return (
       <Card>
-        <div className="text-center py-8">
+        <div className="ui-loading-center">
           <Spin size="large" />
-          <div className="mt-4">Chargement des personnages Dragon Ball...</div>
+          <div className="ui-loading-margin-top">Chargement des personnages Dragon Ball...</div>
         </div>
       </Card>
     );
@@ -211,7 +211,7 @@ export default function DragonBallSelector({ onSelectionComplete }: DragonBallSe
 
   return (
     <Card title="Sélection des personnages Dragon Ball">
-      <Space orientation="vertical" className="w-full" size="middle">
+      <Space orientation="vertical" className="ui-space-full" size="middle">
         {/* Transformations toggle */}
         <div>
           <Checkbox
@@ -227,7 +227,7 @@ export default function DragonBallSelector({ onSelectionComplete }: DragonBallSe
         {/* Race filter */}
         <div>
           <Text strong>Races</Text>
-          <div className="mt-2">
+          <div className="ui-selector-filters-gap">
             <Checkbox.Group
               value={selectedRaces}
               onChange={(values) => setSelectedRaces(values as string[])}
@@ -246,7 +246,7 @@ export default function DragonBallSelector({ onSelectionComplete }: DragonBallSe
         {/* Affiliation filter */}
         <div>
           <Text strong>Affiliations</Text>
-          <div className="mt-2">
+          <div className="ui-selector-filters-gap">
             <Checkbox.Group
               value={selectedAffiliations}
               onChange={(values) => setSelectedAffiliations(values as string[])}
@@ -283,9 +283,9 @@ export default function DragonBallSelector({ onSelectionComplete }: DragonBallSe
         <Checkbox.Group
           value={Array.from(selectedCharacters)}
           onChange={(values) => setSelectedCharacters(new Set(values as string[]))}
-          className="w-full"
+          className="ui-space-full"
         >
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
+          <div className="ui-selector-grid">
             {(() => {
               // Always show all characters, with or without transformations
               const allCharsToDisplay: { name: string; imageUrl: string }[] = [];
