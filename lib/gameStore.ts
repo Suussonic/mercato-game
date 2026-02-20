@@ -339,9 +339,6 @@ class GameStore {
 
     if (!voter || !target || voter.hasVoted) return false;
 
-    // Prevent self-voting
-    if (voterId === targetPlayerId) return false;
-
     room.gameState.votes[voterId] = targetPlayerId;
     voter.hasVoted = true;
 
