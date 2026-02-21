@@ -14,6 +14,17 @@ interface GameConfigFormProps {
   onConfigComplete: (config: GameConfig) => void;
 }
 
+function dedupeCharactersByName(characters: Character[]): Character[] {
+  const seenNames = new Set<string>();
+  return characters.filter((character) => {
+    if (seenNames.has(character.name)) {
+      return false;
+    }
+    seenNames.add(character.name);
+    return true;
+  });
+}
+
 export default function GameConfigForm({ onConfigComplete }: GameConfigFormProps) {
   const [form] = Form.useForm();
   const [themes, setThemes] = useState<Theme[]>([]);
@@ -71,7 +82,8 @@ export default function GameConfigForm({ onConfigComplete }: GameConfigFormProps
       selectedTheme.arcs.forEach(arc => {
         allChars.push(...arc.characters);
       });
-      setAvailableCharacters(allChars);
+      const uniqueChars = dedupeCharactersByName(allChars);
+      setAvailableCharacters(uniqueChars);
       
       // Auto-cocher les personnages des arcs sélectionnés
       if (selectedArcs.length > 0) {
@@ -81,7 +93,7 @@ export default function GameConfigForm({ onConfigComplete }: GameConfigFormProps
           .forEach(arc => {
             charsFromSelectedArcs.push(...arc.characters);
           });
-        const charNames = charsFromSelectedArcs.map(c => c.name);
+        const charNames = Array.from(new Set(charsFromSelectedArcs.map(c => c.name)));
         setSelectedCharacters(charNames);
         form.setFieldsValue({ characters: charNames });
       } else {
@@ -236,11 +248,13 @@ export default function GameConfigForm({ onConfigComplete }: GameConfigFormProps
         {selectedTheme && selectedTheme.name === 'Dragon Ball API' ? (
           <DragonBallSelector
             onSelectionComplete={(characters) => {
-              setAvailableCharacters(characters);
-              setSelectedCharacters(characters.map(c => c.name));
+              const uniqueCharacters = dedupeCharactersByName(characters);
+              const uniqueNames = uniqueCharacters.map(c => c.name);
+              setAvailableCharacters(uniqueCharacters);
+              setSelectedCharacters(uniqueNames);
               form.setFieldsValue({ 
                 arcs: ['Dragon Ball API'],
-                characters: characters.map(c => c.name)
+                characters: uniqueNames
               });
             }}
           />

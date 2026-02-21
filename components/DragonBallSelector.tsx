@@ -12,6 +12,16 @@ interface DragonBallSelectorProps {
   onSelectionComplete: (characters: Character[]) => void;
 }
 
+function dedupeByName(characters: Character[]): Character[] {
+  const uniqueCharacters = new Map<string, Character>();
+  characters.forEach((character) => {
+    if (!uniqueCharacters.has(character.name)) {
+      uniqueCharacters.set(character.name, character);
+    }
+  });
+  return Array.from(uniqueCharacters.values());
+}
+
 export default function DragonBallSelector({ onSelectionComplete }: DragonBallSelectorProps) {
   const [loading, setLoading] = useState(true);
   const [allCharacters, setAllCharacters] = useState<DragonBallCharacter[]>([]);
@@ -92,8 +102,9 @@ export default function DragonBallSelector({ onSelectionComplete }: DragonBallSe
       }
     });
 
-    console.log('Filtered characters:', result.length, 'base:', filtered.length, 'transformations added:', transformationsCount, 'includeTransformations:', includeTransformations);
-    return result;
+    const uniqueResult = dedupeByName(result);
+    console.log('Filtered characters:', uniqueResult.length, 'base:', filtered.length, 'transformations added:', transformationsCount, 'includeTransformations:', includeTransformations);
+    return uniqueResult;
   }, [allCharacters, selectedRaces, selectedAffiliations, includeTransformations]);
 
   const totalAvailableCharacters = useMemo(() => {
@@ -299,7 +310,7 @@ export default function DragonBallSelector({ onSelectionComplete }: DragonBallSe
                   });
                 }
               });
-              return allCharsToDisplay;
+              return dedupeByName(allCharsToDisplay);
             })().map((char) => (
               <Checkbox key={char.name} value={char.name}>
                 {char.name}
