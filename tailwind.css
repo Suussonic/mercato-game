@@ -214,6 +214,23 @@
     gap: 1rem;
   }
 
+  .ui-rules-trigger-wrap {
+    display: flex;
+    justify-content: center;
+  }
+
+  .ui-rules-trigger-btn {
+    min-width: 12rem;
+  }
+
+  .ui-rules-modal .ant-modal-body {
+    padding-top: 0.5rem;
+  }
+
+  .ui-rules-content {
+    margin-top: 0.25rem;
+  }
+
   .ui-room-wrapper {
     width: 100%;
     max-width: 56rem;

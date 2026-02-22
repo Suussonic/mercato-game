@@ -10,6 +10,7 @@ const resources = {
       // Welcome Section
       welcomeTitle: "Bienvenue au Mercato Game",
       howToPlay: "Comment jouer :",
+      viewRules: "Voir les règles",
       step1Title: "1. Créer ou rejoindre une room :",
       step1Content: "Créez une room publique ou privée (avec mot de passe) • Partagez le code de la room avec vos amis • Rejoignez une room existante avec son code",
       step2Title: "2. Configuration de la partie (Chef uniquement) :",
@@ -84,6 +85,7 @@ const resources = {
       
       // Common
       chef: "Chef",
+      close: "Fermer",
       charactersLabel: "Personnages",
       enterBet: "Entrez votre mise",
       
@@ -118,6 +120,7 @@ const resources = {
       // Welcome Section
       welcomeTitle: "Welcome to Mercato Game",
       howToPlay: "How to play:",
+      viewRules: "View rules",
       step1Title: "1. Create or join a room:",
       step1Content: "Create a public or private room (with password) • Share the room code with your friends • Join an existing room with its code",
       step2Title: "2. Game configuration (Host only):",
@@ -192,6 +195,7 @@ const resources = {
       
       // Common
       chef: "Host",
+      close: "Close",
       charactersLabel: "Characters",
       enterBet: "Enter your bet",
       
