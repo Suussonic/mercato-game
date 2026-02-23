@@ -11,11 +11,13 @@ import CreateRoomForm from '@/components/CreateRoomForm';
 import JoinRoomForm from '@/components/JoinRoomForm';
 import DatasetBuilder from '@/components/DatasetBuilder';
 import { ClientGameState } from '@/lib/clientGameState';
+import { useTranslation } from 'react-i18next';
 
 const { Content } = Layout;
 
 export default function Home() {
   const router = useRouter();
+  const { t } = useTranslation();
   const [isDatasetBuilderOpen, setIsDatasetBuilderOpen] = useState(false);
 
   // No auto-redirect - let users stay on home page
@@ -43,7 +45,7 @@ export default function Home() {
               icon={<DatabaseOutlined />}
               onClick={() => setIsDatasetBuilderOpen(true)}
             >
-              Créer son propre Dataset
+              {t('createOwnDataset')}
             </Button>
 
             <div className="ui-grid-forms">

@@ -19,6 +19,7 @@ const resources = {
       step3Content: "À chaque tour, un personnage apparaît aléatoirement • Les joueurs placent leurs mises (sans dépasser leur solde) • Vous pouvez vous coucher à tout moment • Le joueur avec la mise la plus élevée remporte le personnage • Les personnages gagnés sont affichés sous votre nom",
       step4Title: "4. Fin de partie :",
       step4Content: "Après tous les tours ou si le chef termine la partie • Tous les joueurs votent pour désigner le vainqueur • Vous avez 60 secondes pour voter (ou dès que tout le monde a voté)",
+      createOwnDataset: "Créer son propre Dataset",
       
       // Create Room
       createRoom: "Créer une Room",
@@ -129,6 +130,7 @@ const resources = {
       step3Content: "Each turn, a character appears randomly • Players place their bets (without exceeding their balance) • You can fold at any time • The player with the highest bet wins the character • Won characters are displayed under your name",
       step4Title: "4. End of game:",
       step4Content: "After all turns or if the host ends the game • All players vote to designate the winner • You have 60 seconds to vote (or as soon as everyone has voted)",
+      createOwnDataset: "Create your own dataset",
       
       // Create Room
       createRoom: "Create a Room",
