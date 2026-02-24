@@ -3,7 +3,6 @@
 @layer components {
   .ui-page-home {
     min-height: 100vh;
-    background-color: #ffffff;
   }
 
   .ui-page-room {

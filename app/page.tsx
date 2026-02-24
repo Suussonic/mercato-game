@@ -31,10 +31,10 @@ export default function Home() {
   };
 
   return (
-    <Layout className="ui-page-home">
+    <Layout style={{ minHeight: '100dvh' }}>
       <AppHeader />
 
-      <Content className="ui-content-main">
+      <Content className="ui-content-main" style={{ flex: 1 }}>
         <div className="ui-container-6xl">
           <Space orientation="vertical" size="large" className="ui-stack-lg" style={{ display: 'flex', alignItems: 'center' }}>
             <WelcomeSection />
