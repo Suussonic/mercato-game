@@ -3,10 +3,12 @@
 @layer components {
   .ui-page-home {
     min-height: 100vh;
+    min-height: 100dvh;
   }
 
   .ui-page-room {
     min-height: 100vh;
+    min-height: 100dvh;
     background-image: linear-gradient(to bottom right, #111827, #1f2937);
   }
 
@@ -15,11 +17,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: calc(100vh - 64px);
+    flex: 1;
+    min-height: 0;
   }
 
   .ui-content-room {
     padding: 1rem;
+    flex: 1;
+    min-height: 0;
   }
 
   .ui-container-6xl {

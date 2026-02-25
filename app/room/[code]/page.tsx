@@ -124,10 +124,10 @@ export default function RoomPage() {
   };
 
   return (
-    <Layout className="ui-page-room">
+    <Layout className="ui-page-room" style={{ minHeight: '100dvh', display: 'flex', flexDirection: 'column' }}>
       <AppHeader />
 
-      <Content className="ui-content-room">
+      <Content className="ui-content-room" style={{ flex: 1 }}>
         <div className="ui-container-7xl">
           {phase === 'loading' && (
             <div className="ui-center-loader">

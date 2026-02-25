@@ -31,7 +31,7 @@ export default function Home() {
   };
 
   return (
-    <Layout style={{ minHeight: '100dvh' }}>
+    <Layout className="ui-page-home" style={{ minHeight: '100dvh', display: 'flex', flexDirection: 'column' }}>
       <AppHeader />
 
       <Content className="ui-content-main" style={{ flex: 1 }}>
