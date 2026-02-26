@@ -1,7 +1,8 @@
 'use client';
 
+import Link from 'next/link';
+import Image from 'next/image';
 import { Layout, Select, Space, Typography } from 'antd';
-import { TrophyOutlined, GlobalOutlined } from '@ant-design/icons';
 import { useTranslation } from 'react-i18next';
 
 const { Header } = Layout;
@@ -16,14 +17,22 @@ export default function AppHeader() {
   return (
     <Header className="ui-header">
       <div className="ui-header-inner">
-        <Title
-          level={2}
-          className="ui-header-title"
-          style={{ minWidth: 0 }}
-        >
-          <TrophyOutlined className="ui-icon-leading" />
-          <span className="ui-truncate-block">{t('appName')}</span>
-        </Title>
+        <Link href="/" aria-label="Retour à l'accueil" className="ui-flex-center" style={{ minWidth: 0 }}>
+          <Image
+            src="/logo.png"
+            alt="Mercato logo"
+            width={36}
+            height={36}
+            priority
+          />
+          <Title
+            level={2}
+            className="ui-header-title"
+            style={{ minWidth: 0, marginBottom: 0, marginLeft: 8 }}
+          >
+            <span className="ui-truncate-block">{t('appName')}</span>
+          </Title>
+        </Link>
         
         <Space size="middle" className="ui-flex-center">
           <Space size="small" className="ui-flex-center">
