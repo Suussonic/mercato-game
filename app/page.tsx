@@ -60,6 +60,7 @@ export default function Home() {
 
       <Modal
         open={isDatasetBuilderOpen}
+        closable={false}
         onCancel={() => setIsDatasetBuilderOpen(false)}
         footer={null}
         width={900}

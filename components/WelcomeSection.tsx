@@ -26,6 +26,7 @@ export default function WelcomeSection() {
 
       <Modal
         open={isRulesModalOpen}
+        closable={false}
         onCancel={() => setIsRulesModalOpen(false)}
         title={t('howToPlay')}
         footer={[
