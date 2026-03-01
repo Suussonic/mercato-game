@@ -194,7 +194,7 @@ class GameStore {
       return true;
     }
 
-    // Case 2: Only 1 player left - they win if they bet, otherwise skip
+    // Case 2: Only 1 player left - auto-resolve only if they already bet
     if (playersNotFolded.length === 1) {
       const lastPlayer = playersNotFolded[0];
       // Winner only gets character if they placed a bet
@@ -208,8 +208,12 @@ class GameStore {
         ) {
           lastPlayer.characters.push(room.gameState.currentCharacter);
         }
+        this.nextTurn(room);
+        return true;
       }
-      this.nextTurn(room);
+
+      // If the last remaining player has not bet yet, keep the turn running.
+      // Turn resolution will happen on timer end or manual resolve.
       return true;
     }
 
