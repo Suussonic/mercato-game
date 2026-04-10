@@ -5,6 +5,8 @@ Mercato est un jeu web compétitif inspiré du mercato sportif, où les joueurs 
 
 https://mercatogame.fr/
 
+Vidéo Youtube : https://youtu.be/2WfsfNSk7Yc
+
 ## Fonctionnalités principales
 - Création et gestion de salles de jeu multijoueurs
 - Sélection (draft) de personnages
